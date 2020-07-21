@@ -1,0 +1,42 @@
+<html>
+<body>
+    <button onclick="addCart('타트체리')">
+        <h1>타트체리</h1>
+    </button>
+    <button onclick="addCart('멜론')">
+        <h1>멜론</h1>
+    </button>
+    <button onclick="addCart('딸기')">
+        <h1>딸기</h1>
+    </button>
+    <script>
+        //해당하는 아름의 함수로 매개변수 만들고, 카트에 추가 console로 찍기
+
+        var classA = ['철수', '영희', '민수', '아름', 1, 2, 3];
+        var cart = ['바나나', '귤', '사과', '체리', '포도', '복숭아'];
+        // 배열 안에는 여러 데이터가 담길 수가 있다. 쇼핑몰의 장바구니도 배열을 이용한다.
+    
+        document.write('장바구니: ' + cart.length);
+
+        console.log(cart.length);
+        //배열의 개수를 수할 때
+
+        var item4 = cart[3]; //3번째 인덱스에 있는 물건을
+        console.log(item4); //item4에 담는다.
+
+        var item5 = cart[4];
+        console.log(item5);
+
+        // 배열에 추가하기
+        // cart.push('타트체리');
+
+        function addCart(plus) { // addcart에 있는 매개변수 값을 가져오려면 addCart 함수의 매개변수 값을 가져올 자리를 만들어줘야한다!
+
+            cart.push(plus);
+            console.log(cart);
+
+        }
+
+    </script>
+</body>
+</html>
