@@ -1,0 +1,48 @@
+<html>
+<body>
+    <button onclick="sales(100, 500)"> <!--매개변수 데이터를 보냈다고 생각하면 됨-->
+        <h1>100원, 500원</h1>
+    </button>
+    <br><br>
+    <button onclick="sales(200, 600)"> 
+        <h1>200원</h1>
+    </button>
+
+    <button onclick="error()">
+        <h1>오류</h1>
+    </button onclick="error()">
+    
+    <script>    
+        var time = "아침9시";
+
+        humanResource();
+        
+        function humanResource() {
+            var startTime = "아침9시";
+            console.log(startTime);
+        }
+       
+        //전역변수 만들기 
+
+        //sales 함수내의 지역변수 만들기 
+
+        //매개변수 이름 바꿔서 콘솔로 출력 
+
+        function sales(price1, price2) {
+            console.log(price1, price2);
+        }
+
+        function error() {
+            alert('오류발생');
+        }
+
+        // 오류가 날 경우 
+
+        // 1. 전역 변수로 선언되었는가
+
+        // 2. 지역 변수에 존재하고 있는가 
+
+        // 3. 매개변수에 있는가
+    </script>
+</body>
+</html>
