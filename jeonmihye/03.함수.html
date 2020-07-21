@@ -13,17 +13,18 @@
 
     -->
     <script>
-        var time = "1시";
+        var time = "1시"; //회사 내에 있는 규칙
 
         sales(); //sale 함수를 호출해주어야 아래 함수가 작동한다.
 
         function sales() {
             // 지역변수
-            var conference = "아침 9시"
+            var conference = "아침 9시" //영업부 내에 있는 규칙
             
         }
 
         console.log(conference); //지역변수 내에 있기 때문에 함수 밖에 있으면 안뜸!
+        // conference는 영업부 내에 있기 때문에 밖에 있는 것들은 모르게된다. 그러므로 오류.
     </script>
 </body>
 </html>

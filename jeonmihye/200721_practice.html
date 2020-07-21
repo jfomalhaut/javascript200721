@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="addCart('복숭아')">
+        <h1>장바구니 복숭아</h1>
+    </button>
+    <button onclick="addCart('자두')">
+        <h1>장바구니 자두</h1>
+    </button>
+    <button onclick="addCart('체리')">
+        <h1>장바구니 체리</h1>
+    </button>
+
+    <script>
+        var cart = ['사과', '바나나', '키위'];
+
+        function addCart(addProduct) {
+            cart.push(addProduct);
+            console.log(cart);
+        }
+
+    </script>
+</body>
+</html>
