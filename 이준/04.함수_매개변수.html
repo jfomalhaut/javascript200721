@@ -1,0 +1,33 @@
+<html>
+<body>
+	<button onclick="sales(100, 500)">
+		<h1>100원, 500원</h1>
+	</button>
+	
+	<br/><br/>
+	
+	<button onclick="sales(200, 600)">
+		<h1>200원</h1>
+	</button>
+
+	<button onclick="alert()">
+		<h1>오류</h1>
+	</button>
+
+	<script>
+		
+		// 1) 전역변수 만들기,
+		// 2) sales 함수 내의 지역변수 만들기
+		// 3) 매개변수 이름 바꿔서 콘솔로 출력하기
+
+		function sales(price1, price2) {
+			console.log(price);
+		}
+
+		function error() {
+			alert('오류발생!');
+		}
+
+	</script>
+</body>
+</html>
