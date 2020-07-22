@@ -16,12 +16,15 @@
     <button onclick="addCart('서태웅')">서태웅</button>
     <script>
         var team = [];
-        var count = document.getElementById('count');
+
 
         function addCart(players) {
-            var index = team.length(players)
-            if (index !== -1) {
-                count.innerHTML = count;
+            var count = document.getElementById('count');
+            var index = team.indexOf(players)
+            if (index === -1) {
+                team.push(players);
+                console.log(team);
+                count.innerHTML = team.length;
             } else {
                 alert('이미 담긴 팀원입니다.');
             }
