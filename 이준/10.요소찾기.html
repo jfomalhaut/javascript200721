@@ -1,0 +1,36 @@
+<html>
+<head>
+	<style>
+		button { font-size: 20px; }
+	</style>
+</head>
+<body>
+
+	<h1>
+		<span>장바구니 : </span>
+		<span id="count">0</span>
+	</h1>
+
+	<button onclick="addCart('새우')">새우</button>
+	<button onclick="addCart('조개')">조개</button>
+	<button onclick="addCart('청어')">청어</button>
+	<button onclick="addCart('장어')">장어</button>
+	<button onclick="addCart('농어')">농어</button>
+	<button onclick="addCart('숭어')">숭어</button>
+
+	<script>
+		
+		var cart = [];
+		
+		function addCart(item) {
+			var index = cart.indexOf(item);
+			if (index === -1) {
+				cart.push(item);
+			} else {
+				alert('이미 담긴 상품입니다');
+			}
+		}
+
+	</script>
+</body>
+</html>

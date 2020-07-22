@@ -1,0 +1,32 @@
+<html>
+<body>
+	<h1>장바구니 : 3</h1>
+	<button onclick="addCart('상추')">
+		<h1>상추</h1>
+	</button>
+	<button onclick="addCart('배추')">
+		<h1>배추</h1>
+	</button>
+	<button onclick="addCart('깻잎')">
+		<h1>깻잎</h1>
+	</button>
+	<script>
+
+		var cart = ["얼갈이", "고추", "방아"];
+
+		function addCart(item) {
+			var index = cart.indexOf(item);
+			// 없을 때 : -1
+			// 있을 때 : 자기 index
+
+			if (index !== -1) {
+				alert('이미 담긴 상품입니다');
+			} else {
+				cart.push(item);
+			}
+			console.log(cart);
+		}
+
+	</script>
+</body>
+</html>
