@@ -1,0 +1,42 @@
+<html>
+<body>
+    <h1>장바구니 : 3</h1>
+    <button onclick="addCart('1')">
+        <h1>1</h1>
+    </button>
+    <button onclick="addCart('2')">
+        <h1>2</h1>
+    </button>
+    <button onclick="addCart('3')">
+        <h1>3</h1>
+    </button>
+    <script>
+        
+        var cart = ['신세경', '한예슬'];
+
+        function addCart(players) {
+           var index = cart.indexOf(players);
+           //없을 떄 : -1 
+           //있을 때 : 자기 index
+           if (index !== -1) {
+               alert('이미 담긴 상품입니다.');
+           } else {
+                cart.push(players);
+           }
+           console.log(cart)
+        }
+        
+
+        /* 카트의 문제 
+        
+        1. 뺄수 없다 
+        
+        2. 장바구니 갯수 
+        
+        3. 가격 
+        
+        4. 중복담기를 위해 if문과 배열체크 필요*/
+
+    </script>
+</body>
+</html>
