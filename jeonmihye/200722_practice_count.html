@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span>장바구니 : </span>
+    <span id="count">0</span>
+
+    <br><br>
+
+    <button onclick="setCount('상추')">상추</button>
+    <button onclick="setCount('오이')">오이</button>
+    <button onclick="setCount('가지')">가지</button>
+    <button onclick="setCount('소세지')">소세지</button>
+    <button onclick="setCount('버섯')">버섯</button>
+    <button onclick="setCount('토마토')">토마토</button>
+
+    <script>
+
+    cart = [];
+
+    function setCount(item) { // setCount(매개변수) 함수를 이용해 setCount의 데이터를 가져온다.
+        
+        var index = cart.indexOf(item); // 위에서 선언된 매개변수 item의 데이터 index번째를 추출한다.
+        var conut = document.getElementById('count'); // count라는 변수에 DOM에 있는 ID=count를 따온다.
+
+        if(index === -1) { //index(item의 index번째)가 -1이면 배열 안에 없는 데이터라는 뜻
+            cart.push(item); // 카트 안에 없으니 카트에 추가함
+            console.log(cart); //콘솔로 잘되는지  카트 내용 확인
+            conut.innerHTML = cart.length; //html에 직접 접근하여 cart의 length(배열 전체 데이터 개수)를 html로 표현한다. 
+        } else {
+            alert('이미 장바구니에 동일한 상품이 있습니다.'); // -1이 아니면 카트에 있는 동일한 상품이므로 담지 않는다.
+        }
+
+    }
+
+    </script>
+</body>
+</html>
