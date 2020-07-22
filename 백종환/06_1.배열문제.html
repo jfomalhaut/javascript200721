@@ -1,0 +1,36 @@
+<html>
+<body>
+    
+    <button onclick = "addCart('9')">
+        <h1>9</h1>
+    </button>
+    <button onclick = "addCart('8')">
+        <h1>8</h1>
+    </button>
+    <button onclick = "addCart('7')">
+        <h1>7</h1>
+    </button> 
+    <script>
+        var number = [ 1, 2, 3, 4, 5, 6];
+
+        function addCart(addAdd){
+            var index = number.indexOf(addAdd);
+            if(-1 === index){
+                number.push(addAdd);
+            }else{
+                alert("이미 담겨있는 상품입니다");
+            }
+            console.log(number);
+        }
+      
+       
+        
+        //상품을 눌렀을때 이미 담겨있으면, "이미 담겨있는 상품입니다 . alert로 출력"
+        // 1. 상품 버튼을 클릭한다. onclick 이벤트 > addCart()작동
+        // 2. 중복확인 if 문, indexOf
+        // 3,
+                //(1) 이미 담겨 있을 때 : alert(이미담겨있습니다.)
+                //(2) 담겨있지 않을 때 : push();
+    </script>
+</body>
+</html>

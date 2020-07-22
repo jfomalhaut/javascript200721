@@ -1,0 +1,33 @@
+<html>
+<head>
+    <style>
+        button { font-size : 20px;}
+    </style>
+</head>
+<body>
+    <h1>
+       <span>장바구니 :</span>  
+       <span id="count">0</span>
+    </h1>
+    <button onclick="addCart('르브론')">르브론</button>
+    <button onclick="addCart('조던')">조던</button>
+    <button onclick="addCart('돈치치')">돈치치</button>
+    <button onclick="addCart('코비')">코비</button>
+    <button onclick="addCart('서태웅')">서태웅</button>
+    <script>
+        var team = [];
+
+        function addCart(players) {
+            var count = document.getElementById('count');
+            var index = team.indexOf(players)
+            if (index === -1) {
+                team.push(players);
+                console.log(team);
+                count.innerHTML = team.length;
+            } else {
+                alert('이미 담긴 팀원입니다.');
+            }
+        }
+    </script>
+</body>
+</html>

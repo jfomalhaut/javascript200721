@@ -1,0 +1,35 @@
+<html>
+<body>
+    
+    <h1>
+        <span>장바구니 : </span>
+        <span id= "count">0</span> 
+    </h1>  
+    <button onclick = "addCart('새우')">새우</button>
+    <button onclick = "addCart('조게')">조개</button>
+    <button onclick = "addCart('청어')">청어</button>
+    <button onclick = "addCart('장어')">장어</button>
+    <button onclick = "addCart('농어')">농어</button>
+    <button onclick = "addCart('숭어')">숭어</button>
+    
+    <script>
+
+        var cart = [];
+        function addCart(addAdd){
+            var index = cart.indexOf(addAdd);
+            var count = document.getElementById('count');
+            if (index === -1) {
+                cart.push(addAdd);
+                count.innerHTML = cart.length;
+            } else {
+                alert("이미 담겨있는 상품입니다");
+            }
+            console.log(cart);
+        }
+
+        
+
+        
+    </script>
+</body>
+</html>

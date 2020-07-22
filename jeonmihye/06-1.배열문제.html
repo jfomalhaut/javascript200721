@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>장바구니 : 3</h1>
+    <button onclick="addCart('상추')">
+        <h1>상추</h1>
+    </button>
+    <button onclick="addCart('배추')">
+        <h1>배추</h1>
+    </button>
+    <button onclick="addCart('깻잎')">
+        <h1>깻잎</h1>
+    </button>
+
+    <script>
+        
+        var cart = ['얼갈이', '고추', '방아']; // 전역변수
+        
+
+        function addCart(addProduct) { // 지역변수로 매개변수 addCart 지정해줌으로서 아래 push에서 addCart 변수 사용 가능
+                                        // 버튼울 눌렀을 때 발생하는 조건문이라서 addCart안에 if문을 넣어줘야 한다.
+            
+            var addIndex = cart.indexOf(addProduct);
+            console.log(addIndex);
+
+            if (addIndex === -1) { // 배열 안에 없는 데이터일 때 -1, 있는 데이터일 때 자기 index
+                cart.push(addProduct);
+                console.log(cart);
+            } else {
+                alert('이미 장바구니에 있는 상품입니다.');
+            }
+        
+        }
+
+        // 믄제) 상품을 눌렀을 때 담겨 있으면 "이미 담겨있는 상품입니다." 라는 문구가 alert로 출력되게 해보기
+        /* 힌트) 1. 버튼을 클릭한다 onclick 이벤트 => addCart() 작동 
+                 2. 중복확인 IF문 , IndexOf
+                 3.  1) 이미 담겨 있을 때: alert(이미 담겨 있습니다.);
+                     2) 담겨 있지 않을 때: push 작업이 일어난다.
+        */
+    
+
+        // var addIndex = cart.indexOf(addProduct);
+        // var ProductIndex = cart.indexOf(cart());
+
+    
+
+    </script>
+</body>
+</html>
