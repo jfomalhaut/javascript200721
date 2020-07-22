@@ -1,0 +1,39 @@
+<html>
+<body>
+    <button onclick="sales('합계는 600원')">
+        <h1>100원, 500원</h1>
+    </button>
+    <br><br>
+    <button onclick="sales('합계는 700원')">
+        <h1>200원, 500원</h1>
+    </button>
+
+
+ 
+    <script>
+        // 전역변수 만들기
+        // sales 함수 내의 지역변수 만들기
+        // 매개변수 이름 바꿔서 콘솔 출력하기
+
+        var product1 = 600;
+        var product2 = 200; 
+
+        
+        function sales(price1, price2) { //위에 매개변수에서 2개 데이터를 보냈으니 아래 함수에도 자리를 2개 만들어줘야 함
+
+            sum = product1 + product2;
+            console.log('procudt의 합계액은? ' + sum);
+            console.log(price1, price2);
+
+        }
+
+        /*
+            콘솔에서 오류 찾기
+
+            1. 전역변수로 선언되었는가?
+            2. 지역변수로 선언되었는가?
+            3. 매개변수로 선언되었는가?
+        */
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        조건문
+        1. A가 B보다 크다 혹은 작다. (A > B)
+        2. A가 10보다 크거나 같다. (A >= 10)
+        3. A는 10보다 크면서 동시에 20보다는 작다. (A > 10 && A < 20) &&는 '동시에' 충족시켜야한다는 것
+        4. A는 20보다 작거나 30보다 크다 (A <20 || A > 30) || = OR 둘 중 하나만 충족시키면 된다는 것
+        5. A는 20이다 (A === 20)
+        !== 는 '아니다' 라는 뜻
+    -->
+    <script>
+        // var valueA = 10;
+        // var test = valueA > 20;
+        // var test2 = valueA === 10;
+        // console.log(test); 조건문은 참, 거짓 boolean으로밖에 대답할 수 없다. if에 조건문 넣을 땐 참거짓으로 나오게끔
+
+        var num1 = prompt('0~100까지의 숫자를 입력하세요');
+
+        if (num1 >= 0 && num1 <= 100) {
+
+            if (number > 50) {
+                console.log('입력하신 숫자는 50보다 큽니다');
+            } else if (number < 50) {
+                console.log('입력하신 숫자는 50보다 작습니다');
+            } else {
+                console.log('입력하신 숫자는 50입니다');
+            }
+
+        } else {
+            alert('잘못된 입력입니다.');
+        }
+    </script>
+</body>
+</html>
