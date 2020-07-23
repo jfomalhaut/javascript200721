@@ -2,6 +2,26 @@
 <head>
     <style>
         button { font-size : 20px;}
+        #items {
+            display: grid;
+            width: 800px;
+            margin: 50px;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px;
+        }
+
+        .item {
+            height: 150px;
+            background-color: lightblue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .name {font-size:  20px; display: inline-block; margin-right: 10px;}
+        button .remove {
+            font-size: 20px; 
+        }
     </style>
 </head>
 <body>
@@ -9,24 +29,77 @@
        <span>장바구니 :</span>  
        <span id="count">0</span>
     </h1>
-    <button onclick="addCart('르브론')">르브론</button>
-    <button onclick="addCart('조던')">조던</button>
-    <button onclick="addCart('돈치치')">돈치치</button>
-    <button onclick="addCart('코비')">코비</button>
-    <button onclick="addCart('서태웅')">서태웅</button>
+
+    <div class="buttons">
+        <button onclick="addCart('르브론')">르브론</button>
+        <button onclick="addCart('조던')">조던</button>
+        <button onclick="addCart('돈치치')">돈치치</button>
+        <button onclick="addCart('코비')">코비</button>
+        <button onclick="addCart('서태웅')">서태웅</button>
+        <button onclick="addCart('윤대협')">윤대협</button>
+    </div>
+    
+    <div id="items">
+        <!-- <div class="item">
+            <div class="name">르브론</div>
+            <button class="remove">삭제</button>
+        </div>
+        <div class="item">
+            <div class="name">조던</div>
+            <button class="remove">삭제</button>
+        </div>
+        <div class="item">
+            <div class="name">돈치치</div>
+            <button class="remove">삭제</button>
+        </div>
+        <div class="item">
+            <div class="name">코비</div>
+            <button class="remove">삭제</button>
+        </div>
+        <div class="item">
+            <div class="name">서태웅</div>
+            <button class="remove">삭제</button>
+        </div>
+        <div class="item">
+            <div class="name">윤대협</div>
+            <button class="remove">삭제</button>
+        </div> -->
+    </div>
     <script>
         var team = [];
+        var index; 
+        var count = document.getElementById('count'); // 선언을 한번만 하기 위해서 
+        var items = document.getElementById('items');
+        var text = "";
+        var html = "";
 
         function addCart(players) {
-            var count = document.getElementById('count');
-            var index = team.indexOf(players)
+            index = team.indexOf(players)
             if (index === -1) {
                 team.push(players);
                 console.log(team);
                 count.innerHTML = team.length;
+                print();
+                
             } else {
                 alert('이미 담긴 팀원입니다.');
             }
+        }
+
+        function print() {
+            html = "";
+            for (var i = 0; i < team.length; i++){
+                    text = `<div class="item">
+                            <div class="name">${team[i]}</div>
+                            <button class="remove">삭제</button>
+                           </div>`;
+                    html = html + text;
+                }
+                items.innerHTML = html;
+        }
+
+        function remove() {
+            alert('삭제!');
         }
     </script>
 </body>

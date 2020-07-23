@@ -1,0 +1,28 @@
+<html>
+<body>
+    <h1 id="count">0</h1>
+    <button onclick="addCart('조던')">조던</button>
+    <button onclick="addCart('르브론')">르브론</button>
+    <button onclick="addCart('코비')">코비</button>
+    <button onclick="addCart('서태웅')">서태웅</button>
+    <button onclick="addCart('강백호')">강백호</button>
+    <button onclick="addCart('윤대협')">윤대협</button>
+    <script>
+        var team = [];
+        var index;
+        var count = document.getElementById('count');
+
+        function addCart(players) {
+           
+            index = team.indexOf(players);
+            
+            if (index === -1) {
+                team.push(players);
+                count.innerHTML = team.length;
+            } else {
+                alert('이미 포함된 팀원입니다.');
+            }
+        }
+    </script>
+</body>
+</html>
