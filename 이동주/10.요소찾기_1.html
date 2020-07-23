@@ -9,10 +9,12 @@
     <button onclick="addCart('윤대협')">윤대협</button>
     <script>
         var team = [];
+        var index;
+        var count = document.getElementById('count');
 
         function addCart(players) {
-            var count = document.getElementById('count');
-            var index = team.indexOf(players);
+           
+            index = team.indexOf(players);
             
             if (index === -1) {
                 team.push(players);
