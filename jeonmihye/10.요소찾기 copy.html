@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,16 +22,19 @@
         align-items: center;
         justify-content: center;
     }
+
     .name {
         font-size: 20px;
         display: inline-block;
         margin-right: 10px;
     }
+
     button.remove {
         font-size: 20px;
 
     }
 </style>
+
 <body>
     <h1>
         <span>장바구니 : </span>
@@ -44,7 +48,7 @@
         <button onclick="addCart('장어')">장어</button>
         <button onclick="addCart('농어')">농어</button>
         <button onclick="addCart('숭어')">숭어</button>
-    </div>    
+    </div>
 
     <div id="items">
         <!-- <div class="item">
@@ -72,7 +76,7 @@
             <button class="remove">삭제</button>
         </div> -->
     </div>
-    
+
     <script>
 
         var cart = [];
@@ -88,9 +92,10 @@
             if (index === -1) {
                 html = ""; // html에 담겨있는 이전 데이터를 초기화해서 중복되지않게
                 cart.push(item);
-                console.log(item);
                 count.innerHTML = cart.length;
                 print();
+
+                console.log(item);
 
             } else {
                 alert('이미 담긴 상품입니다');
@@ -101,45 +106,45 @@
 
             html = "";
 
-            for(var i = 0; i < cart.length; i++) {
-                    text = 
-                        `<div class="item">
+            for (var i = 0; i < cart.length; i++) {
+                text =
+                    `<div class="item">
                             <div class="name">${cart[i]}</div>
                             <button class="remove" onclick="remove()">삭제</button>
-                        </div>`;
-                    html = html + text;
-                }
-                console.log(html);
-                items.innerHTML = html;
+                    </div>`;
+                html = html + text;
+            }
+            console.log(html);
+            console.log(cart);
+            items.innerHTML = html;
 
         }
 
         function remove() {
-            i = cart.indexOf();
 
             alert('삭제되었습니다.');
-            // cart.splice[print(i.indexOf(item), 1)];
+
             
-            // for(var i = 0; i < cart.length; i++) {
-                 
-            //         cart.splice(cart[i], 1);
-            //         console.log(cart);
-            //         print();
-                    
-            // }
-            
-            if(i < cart.length) {
-                cart.splice(i, 1);
-                print();
-            }
-            console.log(cart, i);
-            
+
+
+
+
+
+
+            console.log(index);
+            console.log(cart);
+
+            // print();
+
+
+
         }
 
         // 1. 제거 버튼을 클릭한다 onclick -> remove(); 실행
-        // 2. 해당 인덱스를 체크한다. indexOf()
-        // 3. 해당 인덱스번째만 지운다. splice()
+        // 2. 해당 인덱스를 체크한다.
+        // 3. if문?
 
     </script>
 </body>
+
 </html>

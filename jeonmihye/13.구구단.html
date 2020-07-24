@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // var number = 2;
+        // var answer;
+
+        // for(var i = 1; i < 10; i++ ) {
+
+        //     answer = number * i
+
+        //     console.log(answer);
+
+        //     document.write(number + " X " + i + "=" + answer);
+        //     document.write("<br>");
+        // }
+
+
+        var html = "";
+        var text = "";
+        
+        for(var i = 1; i < 10; i++ ) {
+
+            // document.write('2 x ' +  i + ' = ' + 2 * i + '<br>');
+
+            text = `<div>2 X ${i} = ${2 * i} </div>`;
+            html = html + text; // html이 text의 작업 내역을 담아뒀다가 한번애 document로 출력해줄 수 있다.
+
+            console.log(html);
+
+        }
+        document.write(html);
+        // console.log(text); // for문 안에 넣어주지 않으면 for문 최종 결과값만 출력된다.
+
+    </script>
+</body>
+</html>
