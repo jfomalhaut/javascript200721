@@ -1,0 +1,99 @@
+<html>
+<head>
+	<style>
+		*{ margin: 0; padding: 0; list-style: none;}
+		header {
+			height: 150px;
+			background: lightgray;
+		}
+		.inner {
+			width: 1150px;
+			height: 100%;
+			margin: 0 auto;
+			display: flex;
+		}
+		.logo {
+			width: 200px;
+			height: 100%;
+			background: gray;
+		}
+		nav {
+			flex-grow: 1;
+			background: coral;
+		}
+
+		ul { display: flex; }
+		li { width: 100%; text-align: center; line-height: 150px; cursor: pointer;}
+		li:hover div:first-child{ background: cornflowerblue;}
+
+		span { color: yellow; }
+
+		.background {
+			width: 100%;
+			background: black;
+			height: 0;
+			transition: .2s;
+		}
+
+		.menus {
+			display: none;
+		}
+
+		.inner:hover + .background, .menus:hover{
+			height: 150px;
+		}
+		
+		li:hover .menus{
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<div class="inner">
+			<!-- <div class="logo"></div> -->
+			<nav>
+				<ul>
+					<li>
+						<div>menu1</div>
+						<div class="menus">
+							<span>sub</span>
+							<span>sub</span>
+							<span>sub</span>
+							<span>sub</span>
+						</div>
+					</li>
+					<li>
+						<div>menu1</div>
+						<div class="menus">
+							<span>sub</span>
+							<span>sub</span>
+							<span>sub</span>
+							<span>sub</span>
+						</div>
+					</li>
+					<li>
+						<div>menu1</div>
+						<div class="menus">
+							<span>sub</span>
+							<span>sub</span>
+							<span>sub</span>
+							<span>sub</span>
+						</div>
+					</li>
+					<li>
+						<div>menu1</div>
+						<div class="menus">
+							<span>sub</span>
+							<span>sub</span>
+							<span>sub</span>
+							<span>sub</span>
+						</div>
+					</li>
+				</ul>
+			</nav>
+		</div>
+		<div class="background"></div>
+	</header>
+</body>
+</html>
