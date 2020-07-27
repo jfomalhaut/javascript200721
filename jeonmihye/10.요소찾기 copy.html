@@ -94,6 +94,7 @@
                 cart.push(item);
                 count.innerHTML = cart.length;
                 print();
+                print2();
 
                 console.log(item);
 
@@ -120,10 +121,34 @@
             items.innerHTML = html;
 
         }
+
+        function print2() {
+
+        html = "";
+
+        for (var i = 0; i < cart.length; i++) {
+            text =
+                `<div class="item">
+                        <div class="name">${cart[i]}</div>
+                        <button class="remove" onclick="remove()">삭제</button>
+                </div>`;
+            html = html + text;
+
+            var test = cart[i]
+            return test;
+        }
+
+        console.log(html);
+        console.log(cart);
+        items.innerHTML = html;
+
+        }
     
         function remove() {
 
-
+            test2 = print2();
+            cart.splice(test2, 1);
+            print();
 
             console.log(text);
             console.log(cart);
