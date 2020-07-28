@@ -39,32 +39,7 @@
         <button onclick="addCart('윤대협')">윤대협</button>
     </div>
     
-    <div id="items">
-        <!-- <div class="item">
-            <div class="name">르브론</div>
-            <button class="remove">삭제</button>
-        </div>
-        <div class="item">
-            <div class="name">조던</div>
-            <button class="remove">삭제</button>
-        </div>
-        <div class="item">
-            <div class="name">돈치치</div>
-            <button class="remove">삭제</button>
-        </div>
-        <div class="item">
-            <div class="name">코비</div>
-            <button class="remove">삭제</button>
-        </div>
-        <div class="item">
-            <div class="name">서태웅</div>
-            <button class="remove">삭제</button>
-        </div>
-        <div class="item">
-            <div class="name">윤대협</div>
-            <button class="remove">삭제</button>
-        </div> -->
-    </div>
+    <div id="items"></div>
     <script>
         var team = [];
         var index; 
@@ -89,18 +64,22 @@
         function print() {
             html = "";
             for (var i = 0; i < team.length; i++){
-                    text = `<div class="item">
-                            <div class="name">${team[i]}</div>
-                            <button class="remove">삭제</button>
-                           </div>`;
-                    html = html + text;
-                }
-                items.innerHTML = html;
+                text = `<div class="item">
+                        <div class="name">${team[i]}</div>
+                        <button class="remove" onclick="remove('${team[i]}')">삭제</button>
+                        </div>`;
+                html = html + text;
+            }
+            items.innerHTML = html;
+            count.innerHTML = team.length;
         }
 
-        function remove() {
-            alert('삭제!');
+        function remove(players) {
+            index = team.indexOf(players);
+            team.splice(index, 1);
+            print();
         }
+
     </script>
 </body>
 </html>
