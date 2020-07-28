@@ -10,7 +10,7 @@
         var interval;
         
         start.onclick = function() {
-            clearInterval()
+            clearInterval(interval);
             interval = setInterval(function() {
                 timer();
             }, TIME);
