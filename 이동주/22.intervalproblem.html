@@ -12,16 +12,20 @@
         var interval;
 
         send.onclick = function() {
-            
             clearInterval(interval);
-            interval = setInterval(function() {
+                interval = setInterval(function() {
                 timer();
             }, TIME);
+    
         }
 
         function timer() {
             value--;
             time.innerHTML = value;
+            if (value === 0) {
+                alert('실패');
+                clearInterval(interval);
+            }  
         }
     </script>
 </body>
