@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>지연된 시간 : <span id="time">0</span></h1>
+    <button id="start">시작</button>
+    
+
+    <script>
+        const TIME = 1000;
+        var time = document.getElementById('time');
+        var start = document.getElementById('start');
+        var value = 0;
+        var interval;
+
+        start.onclick = function() {
+            clearInterval(interval); //여러번 누르면 누적되는 반복 성격을 리셋
+            interval = setInterval(function() {
+                timer();
+            }, TIME);
+        }
+        
+        function timer() {
+            value++;
+            time.innerHTML = value;
+        }
+    </script>
+</body>
+</html>

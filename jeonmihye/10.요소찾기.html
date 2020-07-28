@@ -49,27 +49,7 @@
     <div id="items">
         <!-- <div class="item">
             <div class="name">조개</div>
-            <button class="remove">삭제</button>
-        </div>
-        <div class="item">
-            <div class="name">조개</div>
-            <button class="remove">삭제</button>
-        </div>
-        <div class="item">
-            <div class="name">조개</div>
-            <button class="remove">삭제</button>
-        </div>
-        <div class="item">
-            <div class="name">조개</div>
-            <button class="remove">삭제</button>
-        </div>
-        <div class="item">
-            <div class="name">조개</div>
-            <button class="remove">삭제</button>
-        </div>
-        <div class="item">
-            <div class="name">조개</div>
-            <button class="remove">삭제</button>
+            <button class="remove" onclick="remove('조개')">삭제</button>
         </div> -->
     </div>
     
@@ -78,6 +58,7 @@
         var cart = [];
         var index;
         var count = document.getElementById('count');
+        var items = document.getElementById('items');
         var text = "";
         var html = "";
 
@@ -105,36 +86,27 @@
                     text = 
                         `<div class="item">
                             <div class="name">${cart[i]}</div>
-                            <button class="remove" onclick="remove()">삭제</button>
+                            <button class="remove" onclick="remove('${cart[i]}')">삭제</button>
                         </div>`;
                     html = html + text;
                 }
                 console.log(html);
                 items.innerHTML = html;
+                count.innerHTML = cart.length; // 장바구니 개수 카운트되는 코드를 print();에 넣어주면 print(); 실행 시 장바구니 카운트됨
 
         }
 
-        function remove() {
-            i = cart.indexOf();
+        function remove(item) {
 
-            alert('삭제되었습니다.');
-            // cart.splice[print(i.indexOf(item), 1)];
-            
-            // for(var i = 0; i < cart.length; i++) {
-                 
-            //         cart.splice(cart[i], 1);
-            //         console.log(cart);
-            //         print();
-                    
-            // }
-            
-            if(i < cart.length) {
-                cart.splice(i, 1);
-                print();
-            }
-            console.log(cart, i);
+            index = cart.indexOf(item);
+            cart.splice(index, 1);
+            print();
+
+            // alert('삭제되었습니다.');
+            console.log(item);
             
         }
+
 
         // 1. 제거 버튼을 클릭한다 onclick -> remove(); 실행
         // 2. 해당 인덱스를 체크한다. indexOf()

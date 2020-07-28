@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <input type="text" id="userId" value=""><br/>
+        <input type="password" id="userPwd" value=""><br/>
+        <button id="login">로그인</button>
+    </div>
+
+    <script>
+        //const는 상수를 의미, 재선언이 되지 않는다.
+        const ID = "hss2458";
+        const PWD = "mihye";
+
+        var login = document.getElementById('login');
+        var userId = document.getElementById('userId');
+        var userPwd = document.getElementById('userPwd');
+
+        var IdValue = "";
+        var PwValue = "";
+
+        login.onclick = function() {
+            IdValue = userId.value;
+            PwValue = userPwd.value;
+
+            // console.log(userId.type); // 프로퍼티
+
+            if(IdValue === ID && PwValue === PWD) {
+                alert('로그인 되었습니다.');
+            } else {
+                alert('로그인에 실패하였습니다.');
+            }
+
+        }
+
+
+    </script>
+</body>
+</html>
