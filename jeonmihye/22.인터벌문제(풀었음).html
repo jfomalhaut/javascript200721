@@ -39,34 +39,35 @@
 
             hideTag(); //버튼 사라지고 
             timeTxt.style.display = "block"; // 카운트가 span 태그에 출력된다.
-
             countPrint();
-            reTry();
 
         }
 
-        function countPrint() {
+        function countPrint() { // 카운트 출력 함수
 
-            clearInterval(interval);
+            clearInterval(interval); // 버튼 여러 번 누를 시 함수 호출 누적 방지
             interval = setInterval(function() {
                 timer();
             }, TIME);
 
         }
 
-        function reTry() {
-            setTimeout(function() {
-                alert('인증이 실패되었습니다.');
-                clearInterval(interval);
+        function timer() { // 숫자 카운트 값 생성 함수
+            value--;
+            time.innerHTML = value; // span 태그에 숫자(value) 로그
 
-                showTag();
-            }, 4000);
+            if(value === 0) { // 만약 숫자가 0이면 reTry(); 함수 출력
+                reTry();
+            }
         }
 
+        function reTry() { // 제한시간 초과 시(0초 시) 다시 카운트 출력
 
-        function timer() {
-            value--;
-            time.innerHTML = value;
+            alert('인증이 실패되었습니다. 다시 시도해주세요.');
+            clearInterval(interval); // 0초가 되면 카운트 중단
+
+            showTag(); // 인증 실패 시 다시 키운트 표기 부분 없어지고, 버튼만 출력
+
         }
 
         function hideTag() {
@@ -74,7 +75,9 @@
         }
 
         function showTag() {
-            start.style.display = "block";
+            value = "4"; // 재인증(id=start) 버튼 다시 누를 시 카운트 값 4로 설정
+            timeTxt.style.display = "none"; // h1, span 태그 숨김
+            start.style.display = "block"; // 버튼은 보이게 처리
         }
 
     </script>
