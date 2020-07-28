@@ -1,0 +1,32 @@
+<html>
+<body>
+	<div class="container">
+		<input type="text" id="userId"><br/>
+		<input type="password" id="userPwd"><br/>
+		<button id="login">로그인</button>
+	</div>
+	<script>
+		// 엔터를 쳐서 로그인 함수를 불러오기
+		// const는 상수를 의미, 재선언이 되지 않는다.
+		const ID = "dlwnssla";
+		const PWD = "dlwns123";
+
+		var login = document.getElementById('login');
+		var userId = document.getElementById('userId');
+		var userPwd = document.getElementById('userPwd');
+
+		login.onclick = function() {
+			// 프로퍼티 property
+			if (userId.value === ID && userPwd.value === PWD) {
+				alert('success');
+			} else {
+				alert('fail');
+			}
+		}
+
+
+
+
+	</script>
+</body>
+</html>

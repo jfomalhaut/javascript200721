@@ -1,0 +1,17 @@
+<html>
+<body>
+	<input type="text" id="label" value="">
+	<button id="login">로그인</button>
+	<script>
+		var login = document.getElementById('login');
+		var label = document.getElementById('label');
+		var value = "";
+
+		login.onclick = function() {
+			value = label.value;
+			console.log(value);
+		}
+		
+	</script>
+</body>
+</html>
