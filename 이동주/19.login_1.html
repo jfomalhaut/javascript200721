@@ -1,0 +1,25 @@
+<html>
+<body>
+    <div class="container">
+        <input type="text" id="userId"><br>
+        <input type="password" id="userPwd"><br>
+        <button id="login">로그인</button>
+    </div>
+    <script>
+        const ID = "lupigomu";
+        const PWD = "dlwnsqkqh";
+
+        var userId = document.getElementById('userId');
+        var userPwd = document.getElementById('userPwd');
+        var login = document.getElementById('login');
+
+        login.onclick = function() {
+            if (userId.value === ID && userPwd.value === PWD) {
+                alert('success');
+            } else {
+                alert('fail');
+            }
+        }
+    </script>
+</body>
+</html>
