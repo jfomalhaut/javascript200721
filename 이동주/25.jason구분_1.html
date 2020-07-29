@@ -1,0 +1,57 @@
+<html>
+<head>
+    <style>
+        #list {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            grid-gap: 20px;
+            width: 800px;
+            margin: 50px auto;
+        }
+
+        #list .img {
+            height: 300px;
+            background-position: top center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        #list .name {font-size: 20px;}
+    </style>
+</head>
+<body>
+    <div id="list"></div>
+    <script>
+        var list = document.getElementById('list');
+        var team = [
+            {id: 1, name: "디카프리오", age:  40, src:'d.jpg'},
+            {id: 2, name: "브래들리쿠퍼", age:  40, src:'b.jpg'},
+            {id: 3, name: "라이언고슬링", age:  40, src:'l.jpg'},
+            {id: 4, name: "다니엘크레이그", age:  40, src:'dc.jpg'},
+            {id: 5, name: "크리스찬베일", age:  40, src:'cv.jpg'},
+            {id: 6, name: "톰하디", age:  40, src:'th.jpg'}
+        ];
+
+        var name, id, age, src, txt, html = "";
+
+        
+        for (var i = 0; i < team.length; i++) {
+            name = team[i].name;
+            age = team[i].age;
+            src = team[i].src;
+
+            txt = `
+                  <div class="item">
+                    <div class="img" style="background-image: url('img/${src}');"></div>
+                    <h1 class="name">${name}</h1>
+                    <div>${age}세</div>
+                  </div>
+                `;
+                html += txt;
+        }
+        list.innerHTML = html;
+
+        
+    </script>
+</body>
+</html>

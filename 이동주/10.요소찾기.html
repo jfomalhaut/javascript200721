@@ -29,7 +29,7 @@
        <span>장바구니 :</span>  
        <span id="count">0</span>
     </h1>
-
+    <button onclick="removeAll()">장바구니 비우기</button>
     <div class="buttons">
         <button onclick="addCart('르브론')">르브론</button>
         <button onclick="addCart('조던')">조던</button>
@@ -80,6 +80,13 @@
             print();
         }
 
+        function removeAll() {
+            html="";
+            team.length = 0;
+
+            items.innerHTML = html;
+            count.innerHTML = team.length;
+        }
     </script>
 </body>
 </html>
