@@ -38,7 +38,7 @@
     </h1>
     
     <div>
-        <button onclick="removeAll">장바구니 비우기</button>
+        <button onclick="removeAll()">장바구니 비우기</button>
     </div>
 
     <div class="buttons">
@@ -110,6 +110,16 @@
             // alert('삭제되었습니다.');
             console.log(item);
             
+        }
+
+        function removeAll() { // 장바구니 한 번에 삭제하기
+
+            html="";
+            cart.length = 0;
+
+            items.innerHTML = html;
+            count.innerHTML = cart.length;
+
         }
 
 
