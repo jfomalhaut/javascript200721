@@ -9,10 +9,10 @@
 			margin: 50px auto;
 		}
 		#list .img{
-			height: 150px;
+			height: 300px;
 			background-size: cover;
 			background-repeat: no-repeat;
-			background-position: center;
+			background-position: top center;
 		}
 		#list .name{ font-size: 20px;}
 	</style>
@@ -20,6 +20,7 @@
 <body>
 	<div id="list"></div>
 	<script>
+		var list = document.getElementById('list');
 		var team = [
 			{ id: 1, name: "알렉산더", age: 33, src: 'al.jpeg' },
 			{ id: 2, name: "징기스칸", age: 28, src: 'jing.jpg' },
@@ -29,9 +30,23 @@
 			{ id: 6, name: "광개토대왕", age: 48, src: 'mun.jpg' }
 		];
 
+		var name, age, src, txt, html = "";
+
 		for (var i = 0; i < team.length; i++) {
-			console.log(team[i].src);
+			name = team[i].name;
+			age = team[i].age;
+			src = team[i].src;
+
+			txt = `
+				<div class="item">
+					<div class="img" style="background-image: url('img/${src}');"></div>
+					<h1 class="name">${name}</h1>
+					<div>${age}세</div>
+				</div>
+			`;
+			html += txt;
 		}
+		list.innerHTML = html;
 
 	</script>
 </body>
