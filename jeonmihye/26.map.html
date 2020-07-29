@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var age = [10, 20, 30, 40, 50];
+        var newAge = [];
+        var index = 2;
+
+        for(var i = 0; i < age.length; i++) {
+
+            if(i === index) {
+                newAge.push(age[i] + 5);
+            }else {
+                newAge.push(age[i]);
+            }
+            console.log(newAge);
+        }
+
+
+        for(var i = 0; i < age.length; i++) {
+            value = age[i];
+            if(i === 2) {
+                value = age[i] +5;
+            }
+            newAge.push(value);
+        }
+        console.log(value);
+
+    </script>
+</body>
+</html>

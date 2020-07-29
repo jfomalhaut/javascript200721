@@ -36,6 +36,10 @@
         <span>장바구니 : </span>
         <span id="count">0</span>
     </h1>
+    
+    <div>
+        <button onclick="removeAll">장바구니 비우기</button>
+    </div>
 
     <div class="buttons">
         <button onclick="addCart('새우')">새우</button>
@@ -89,6 +93,7 @@
                             <button class="remove" onclick="remove('${cart[i]}')">삭제</button>
                         </div>`;
                     html = html + text;
+                 //저장개념 = 보관된 데이터 + 새로운 데이터
                 }
                 console.log(html);
                 items.innerHTML = html;
