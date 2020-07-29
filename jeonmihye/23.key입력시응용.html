@@ -1,0 +1,21 @@
+<html>
+<body>
+	<input type="text" id="keypress">
+	<b id="warning" style="color: red;"></b>
+	<script>
+		var keypress = document.getElementById('keypress');
+		var warning = document.getElementById('warning');
+		
+		keypress.onkeyup = function() {
+			if (keypress.value.length < 8) {
+				warning.style.color = "red";
+				warning.innerHTML = "글자수가 부족합니다!";
+			} else {
+				warning.innerHTML = "success";
+				warning.style.color = "green";
+			}
+		}
+		
+	</script>
+</body>
+</html>
