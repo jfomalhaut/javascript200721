@@ -7,8 +7,8 @@
 </head>
 <body>
     <div class="container">
-        <input type="text" id="userId" value=""><br/>
-        <input type="password" id="userPwd" value=""><br/>
+        <input type="text" id="userId" value="" onkeydown="JavaScript:Enter_Check();"><br/>
+        <input type="password" id="userPwd" value="" onkeydown="JavaScript:Enter_Check();"><br/>
         <button id="login">로그인</button>
     </div>
 
@@ -23,6 +23,13 @@
 
         var IdValue = "";
         var PwValue = "";
+
+        function Enter_Check(){
+        // 엔터키의 코드는 13입니다.
+            if(event.keyCode == 13){
+                alert('로그인 되었습니다.');
+            }
+        }
 
         login.onclick = function() {
             IdValue = userId.value;
