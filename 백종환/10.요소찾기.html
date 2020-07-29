@@ -1,35 +1,74 @@
 <html>
+<head>
+    <style>
+        button { font-size:20px; }
+        .item {
+            display:grid;
+            width: 800px;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px;
+            margin: 50px;
+        }
+        #item {
+            height: 150px;
+            background-color: lightgray;
+        }
+    </style>
+</head>
 <body>
     
     <h1>
         <span>장바구니 : </span>
         <span id= "count">0</span> 
     </h1>  
+    <div class="buttons">
     <button onclick = "addCart('새우')">새우</button>
-    <button onclick = "addCart('조게')">조개</button>
+    <button onclick = "addCart('조개')">조개</button>
     <button onclick = "addCart('청어')">청어</button>
     <button onclick = "addCart('장어')">장어</button>
     <button onclick = "addCart('농어')">농어</button>
     <button onclick = "addCart('숭어')">숭어</button>
-    
+    </div>
+    <div id='items'></div>
+
     <script>
 
         var cart = [];
+        var index;
+        var count = document.getElementById('count');
+        var items = document.getElementById('items');
+        
         function addCart(addAdd){
-            var index = cart.indexOf(addAdd);
-            var count = document.getElementById('count');
+            index = cart.indexOf(addAdd);
             if (index === -1) {
                 cart.push(addAdd);
-                count.innerHTML = cart.length;
+                print();
             } else {
                 alert("이미 담겨있는 상품입니다");
             }
-            console.log(cart);
         }
 
-        
+        function print(){
+            html = "";
+            for (var i = 0; i < cart.length; i++){
+                text = 
+                    `<div class="item">
+                        <div class="name">${cart[i]}</div>
+                        <button class="remove" onclick="remove('${cart[i]}')">삭제</button>
+                    </div>`;
+                html = html + text;
+                // console.log(html);
+            }
+            items.innerHTML = html;
+            count.innerHTML = cart.length;
+        }
 
-        
+        function remove(item) {
+            index = cart.indexOf(item);
+            cart.splice(index, 1);
+            print();
+        }
+
     </script>
 </body>
 </html>

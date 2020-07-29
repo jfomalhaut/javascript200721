@@ -1,0 +1,36 @@
+<html>
+<body>
+    <button onclick = "addTeam('리오넬 메시')">
+        <h1>메시</h1>
+    </button>
+    <button onclick = "addTeam('가레스 베일')">
+        <h1>베일</h1>
+    </button>
+    <button onclick = "addTeam('사비')">
+        <h1>사비</h1>
+    </button>
+    <button onclick = "addTeam('라모스')">
+        <h1>라모스</h1>
+    </button>
+    <button onclick = "addTeam('수아레스')">
+        <h1>수아레스</h1>
+    </button>
+    <button onclick = "addTeam('조르디 알바')">
+        <h1>알바</h1>
+    </button>
+    <script>
+        //상품을 눌렀을때 이미 담겨있으면, "이미 담겨있는 상품입니다 . alert로 출력"
+        var players = [];
+        function addTeam(world){
+            var index = players.indexOf(world);
+            if(index === -1){
+                players.push(world);
+            } else {
+                alert('이미 담겨있는 상품입니다');
+            }
+            console.log(players);
+        }
+        
+    </script>
+</body>
+</html>

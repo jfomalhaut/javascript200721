@@ -1,0 +1,34 @@
+<html>
+<body>
+    <div class="container">
+        <input type="text" id="userId"><br/>
+        <input type="password" id="userPw"><br/>
+        <button id="login">로그인</button><br/>
+        
+    </div>
+    <script>
+        //const 는 상수를 의미 , 재선언이 되지 않는다.
+        var userId = document.getElementById('userId');
+        var userPw = document.getElementById('userPw');
+        var login = document.getElementById('login');
+        
+
+        const ID = "apple";
+        const PWD = "1234";
+        
+        
+        login.onclick = function() {
+            // property : value, type
+            //엔터를 쳐서 로그인 함수 불러오기 숙제
+            if(userId.value !== ID || userPw.value !== PWD){
+                alert("정보가 일치하지 않습니다");
+            }else {
+                alert("로그인 성공!");
+            }
+        }
+
+       
+
+    </script>
+</body>
+</html>

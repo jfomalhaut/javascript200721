@@ -1,0 +1,41 @@
+<html>
+<body>
+    <span id="time">10</span>
+    <button id="credit">인증번호</button>
+    <script>
+        const TIME = 1000;
+        var time = document.getElementById('time');
+        var credit = document.getElementById('credit');
+        var value = 10;
+        var interval;
+
+        
+        credit.onclick = function() {
+            clearInterval(interval); 
+            interval = setInterval(function() {
+                timer();
+
+            }, TIME);
+        } 
+       
+        
+        function timer() {
+            if(value !== 0){
+                value--;
+                time.innerHTML = value;
+            }else {
+                value === 0;
+                time.innerHTML = value;
+                clearInterval(interval);
+                alert('실패!');
+
+             }
+             
+        }
+
+        
+       
+    
+    </script>
+</body>
+</html>

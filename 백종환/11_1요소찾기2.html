@@ -1,0 +1,56 @@
+<html>
+    
+<body>
+    <h1 id = "count">0<h1>
+        <button onclick = "addTeam('리오넬 메시')">
+            <h1>메시</h1>
+        </button>
+        <button onclick = "addTeam('가레스 베일')">
+            <h1>베일</h1>
+        </button>
+        <button onclick = "addTeam('사비')">
+            <h1>사비</h1>
+        </button>
+        <button onclick = "addTeam('라모스')">
+            <h1>라모스</h1>
+        </button>
+        <button onclick = "addTeam('수아레스')">
+            <h1>수아레스</h1>
+        </button>
+        <button onclick = "addTeam('조르디 알바')">
+            <h1>알바</h1>
+        </button>
+   
+    <script>
+       
+        var players = [];
+        function addTeam(ct){
+            var count = document.getElementById('count');
+            var index = players.indexOf(ct);
+            if(index === -1){
+                players.push(ct);
+                count.innerHTML = players.length;
+            } else {
+                alert('이미 담겨 있는 상품입니다');
+            }
+            
+            console.log(players);
+            
+        }
+
+        var players1 = [];
+        function addTeam1(ct){
+            var count = document.getElementById('count');
+            var index = players1.indexOf(ct);
+            if(index === -1){
+                players1.push(ct);
+                count.innerHTML = players.length;
+            } else {
+                alert('이미 담겨있는 상품입니다.');
+            }
+        }
+        
+        
+    </script>
+</body>
+</html>
