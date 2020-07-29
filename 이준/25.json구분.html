@@ -20,7 +20,6 @@
 <body>
 	<div id="list"></div>
 	<script>
-		var list = document.getElementById('list');
 		var team = [
 			{ id: 1, name: "알렉산더", age: 33, src: 'al.jpeg' },
 			{ id: 2, name: "징기스칸", age: 28, src: 'jing.jpg' },
@@ -30,23 +29,46 @@
 			{ id: 6, name: "광개토대왕", age: 48, src: 'kwang.png' }
 		];
 
-		var name, age, src, txt, html = "";
+		// var newTeam = team.map(item => item.name);
+		
+		var age = [20, 30, 40, 50, 60];
+		var newAge = age.map(item => item+"세");
+		
+		
 
-		for (var i = 0; i < team.length; i++) {
-			name = team[i].name;
-			age = team[i].age;
-			src = team[i].src;
 
-			txt = `
-				<div class="item">
-					<div class="img" style="background-image: url('img/${src}');"></div>
-					<h1 class="name">${name}</h1>
-					<div>${age}세</div>
-				</div>
-			`;
-			html += txt;
-		}
-		list.innerHTML = html;
+
+
+
+
+
+
+
+
+		// print();
+
+		// var name, age, src, txt, html = "";
+
+		// function print() {
+		// 	html = "";
+		// 	for (var i = 0; i < team.length; i++) {
+		// 		name = team[i].name;
+		// 		age = team[i].age;
+		// 		src = team[i].src;
+
+		// 		txt = `
+		// 			<div class="item">
+		// 				<div class="img" style="background-image: url('img/${src}');"></div>
+		// 				<h1 class="name">${name}</h1>
+		// 				<div>${age}세</div>
+		// 			</div>
+		// 		`;
+		// 		html += txt;
+		// 	}
+		// 	list.innerHTML = html;
+		// }
+
+
 
 	</script>
 </body>

@@ -28,7 +28,9 @@
 		<span>장바구니 : </span>
 		<span id="count">0</span>
 	</h1>
-	
+	<div>
+		<button onclick="removeAll()">장바구니 비우기</button>
+	</div>
 	<div class="buttons">
 		<button onclick="addCart('새우')">새우</button>
 		<button onclick="addCart('조개')">조개</button>
@@ -38,7 +40,7 @@
 		<button onclick="addCart('숭어')">숭어</button>
 	</div>
 
-	<div id="items"></div>
+	<div id="items">장바구니가 비어있습니다..</div>
 
 	<script>
 		
@@ -77,6 +79,10 @@
 			index = cart.indexOf(item);
 			cart.splice(index, 1);
 			print();
+		}
+		
+		function removeAll() {
+
 		}
 
 	</script>
