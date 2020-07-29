@@ -6,17 +6,16 @@
     </div>
     <script>
         const TIME = 1000;
-        var send = document.getElementById('send');
         var time = document.getElementById('time');
+        var send = document.getElementById('send');
         var value = 10;
         var interval;
 
         send.onclick = function() {
-            clearInterval(interval);
-                interval = setInterval(function() {
-                timer();
-            }, TIME);
-    
+           clearInterval(interval);
+           interval = setInterval (function() {
+               timer();
+           }, TIME);
         }
 
         function timer() {
