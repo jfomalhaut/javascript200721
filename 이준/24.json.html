@@ -1,0 +1,38 @@
+<html>
+<head>
+	<style>
+		#list {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			grid-gap: 20px;
+			width: 800px;
+			margin: 50px auto;
+		}
+		#list .img{
+			height: 150px;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+		#list .name{ font-size: 20px;}
+	</style>
+</head>
+<body>
+	<div id="list"></div>
+	<script>
+		var team = [
+			{ id: 1, name: "알렉산더", age: 33, src: 'al.jpeg' },
+			{ id: 2, name: "징기스칸", age: 28, src: 'jing.jpg' },
+			{ id: 3, name: "맥아더", age: 45, src: 'kasar.jpg' },
+			{ id: 4, name: "을지문덕", age: 55, src: 'kwang.png' },
+			{ id: 5, name: "카이사르", age: 34, src: 'mac.jpeg' },
+			{ id: 6, name: "광개토대왕", age: 48, src: 'mun.jpg' }
+		];
+
+		for (var i = 0; i < team.length; i++) {
+			console.log(team[i].src);
+		}
+
+	</script>
+</body>
+</html>

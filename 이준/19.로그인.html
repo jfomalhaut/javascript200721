@@ -16,16 +16,28 @@
 		var userPwd = document.getElementById('userPwd');
 
 		login.onclick = function() {
-			// 프로퍼티 property
+			onLogin();
+		}
+
+		userId.onkeyup = function(e) {
+			if (e.keyCode === 13) {
+				onLogin();
+			}
+		}
+
+		userPwd.onkeypress = function(e) {
+			if (e.keyCode === 13) {
+				onLogin();
+			}
+		}
+
+		function onLogin() {
 			if (userId.value === ID && userPwd.value === PWD) {
 				alert('success');
 			} else {
 				alert('fail');
 			}
 		}
-
-
-
 
 	</script>
 </body>
