@@ -1,0 +1,24 @@
+<html>
+<body>
+	<script>
+		var cart = [
+			{ id: 1, name: '상품1', check: true },
+			{ id: 2, name: '상품2', check: true },
+			{ id: 3, name: '상품3', check: false },
+			{ id: 4, name: '상품4', check: false },
+			{ id: 5, name: '상품5', check: true }
+		];
+
+		// 장바구니에 담긴 상품을 구매한 이후의 카트를
+		// filter를 이용해 newCart로 구현해보세요.
+
+		var newCart = cart.filter(item => {
+			if (!item.check) {
+				return item;
+			}
+		});
+		console.log(newCart);
+
+	</script>
+</body>
+</html>

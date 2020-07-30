@@ -1,0 +1,20 @@
+<html>
+<body>
+	<script>
+		var num = [10, 20, 30, 40, 50];
+		var newNum = [];
+		for (var i in num) {
+			newNum.push(num[i] * 10);
+		}
+
+		var newNum2 = num.map((item, index) => {
+			if (index === 2) {
+				return item * 10;
+			} else {
+				return item;
+			}
+		});
+
+	</script>
+</body>
+</html>

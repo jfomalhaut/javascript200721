@@ -1,0 +1,40 @@
+<html>
+<body>
+	<script>
+		var num = [10, 20, 30, 40, 50];
+		// for문을 이용하여
+		// 35 이하는 빼보기
+		var num35 = [];
+
+		for (var i in num) {
+			if (num[i] > 35) {
+				num35.push(num[i]);
+			}
+		}
+
+		// var numFilter = num.filter(item => item > 35);
+		var numFilter = num.filter(item => {
+			if (item > 35) {
+				return item;
+			}
+		});
+
+		var num2 = [1, 2, 3, 4, 5];
+		var num2For = [];
+
+		var numFilter2 = num2.filter(item => item % 2 === 0);
+
+		for (var i in num2) {
+			if (num2[i] % 2 === 0) {
+				num2For.push(num2[i]);
+			}
+		}
+		
+		// item % 2 나머지가 1 혹은 0
+		// 1인 경우 홀수
+		// 0인 경우 짝수
+		
+
+	</script>
+</body>
+</html>
