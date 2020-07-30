@@ -32,23 +32,34 @@
             {id:6, name: "윤태협", age:18, src:'yoon.png'},
         ];
 
-        var name, age, src, txt, html = "";
+        var newTeam = team.map(item => item.name);
+        
+        var age = [20, 30, 40, 50, 60];
+        var newAge = age.map(item => item + 5 + "년후");
+        console.log(newAge);
+        // print();
 
-        for (var i = 0; i < team.length; i++) {
-            name = team[i].name;
-            age = team[i].age;
-            src = team[i].src;
+        // var name, age, src, txt, html = "";
 
-            txt = `
-                  <div class="item">
-                    <div class="img" style="background-image: url('img/${src}');"></div>
-                    <h1 class="name">${name}</h1>
-                    <div>${age}세</div>
-                  </div>
-                `;
-                html += txt;
-        }
-        list.innerHTML = html;
+        // function print() {
+        //     html = "";
+        //     for (var i = 0; i < team.length; i++) {
+        //     name = team[i].name;
+        //     age = team[i].age;
+        //     src = team[i].src;
+
+        //     txt = `
+        //           <div class="item">
+        //             <div class="img" style="background-image: url('img/${src}');"></div>
+        //             <h1 class="name">${name}</h1>
+        //             <div>${age}세</div>
+        //           </div>
+        //         `;
+        //         html += txt;
+        //     }
+        //     list.innerHTML = html;
+        // }
+       
     </script>
 </body>
 </html>

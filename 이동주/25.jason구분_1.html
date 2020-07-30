@@ -3,7 +3,7 @@
     <style>
         #list {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(3,1fr);
             grid-gap: 20px;
             width: 800px;
             margin: 50px auto;
@@ -11,9 +11,9 @@
 
         #list .img {
             height: 300px;
-            background-size: cover;
-            background-repeat: no-repeat;
             background-position: top center;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
 
         #list .name {font-size: 20px;}
@@ -24,16 +24,17 @@
     <script>
         var list = document.getElementById('list');
         var team = [
-            {id:1, name: "르브론", age:37, src:'lebron.jpg'},
-            {id:2, name: "돈치치", age:22, src:'doncic.jpg'},
-            {id:3, name: "조던", age:58, src:'jordan.jpg'},
-            {id:4, name: "매직존슨", age:62, src:'johnson.png'},
-            {id:5, name: "서태웅", age:17, src:'seo.jpg'},
-            {id:6, name: "윤태협", age:18, src:'yoon.png'},
+            {id: 1, name: "디카프리오", age:  40, src:'d.jpg'},
+            {id: 2, name: "브래들리쿠퍼", age:  40, src:'b.jpg'},
+            {id: 3, name: "라이언고슬링", age:  40, src:'l.jpg'},
+            {id: 4, name: "다니엘크레이그", age:  40, src:'dc.jpg'},
+            {id: 5, name: "크리스찬베일", age:  40, src:'cv.jpg'},
+            {id: 6, name: "톰하디", age:  40, src:'th.jpg'}
         ];
 
-        var name, age, src, txt, html = "";
+        var name, id, age, src, txt, html = "";
 
+        
         for (var i = 0; i < team.length; i++) {
             name = team[i].name;
             age = team[i].age;
@@ -49,6 +50,8 @@
                 html += txt;
         }
         list.innerHTML = html;
+
+        
     </script>
 </body>
 </html>
