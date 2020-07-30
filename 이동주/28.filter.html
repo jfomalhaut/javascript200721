@@ -1,0 +1,22 @@
+<html>
+<body>
+    <script>
+        var num = [10, 20, 30, 40, 50];
+        var num35 = [];
+       
+        for (var i in num) {
+            if (num[i] > 35) {
+                num35.push(num[i]);
+            }
+        } 
+            // num[i]가 item가 같음 
+        // var numFilter = num.filter(item => item > 35);
+
+        var num2 = [1, 2, 3, 4, 5];
+
+        var numFilter = num2.filter(item => item % 2 === 0); 
+        
+        console.log(numFilter);// 주로 뺄때 많이 씀
+    </script>
+</body>
+</html>

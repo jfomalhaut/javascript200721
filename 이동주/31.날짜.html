@@ -1,0 +1,34 @@
+<html>
+<body>
+    <script>
+        var yoils = ['일', '월', '화', '수', '목', '금', '토'];
+        var to = new Date();
+        var year = to.getFullYear();
+        var month = zero(to.getMonth() + 1);
+        var date = zero(to.getDate());
+        var day = getYoil(to.getDay()) + "요일";
+
+        var hour = to.getHours();
+        var min = to.getMinutes();
+        var sec = to.getSeconds();
+
+        console.log(day);
+        
+        var today = `${year}-${month}-${date}`;
+        
+        console.log(today);
+    
+        function zero(value) {
+            if (value < 10) {
+                return "0" + value;
+            } 
+            return value;   
+        }
+
+        function getYoil (yoil) {
+			return yoils[yoil];
+		}
+        
+    </script>
+</body>
+</html>

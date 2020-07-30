@@ -70,6 +70,9 @@
                         </div>`;
                 html = html + text;
             }
+            if (html === "") {
+                html = "장바구니가 비어있습니다.";
+            }
             items.innerHTML = html;
             count.innerHTML = team.length;
         }
@@ -81,12 +84,10 @@
         }
 
         function removeAll() {
-            html="";
-            team.length = 0;
-
-            items.innerHTML = html;
-            count.innerHTML = team.length;
+            team = [];
+            print();
         }
+    
     </script>
 </body>
 </html>

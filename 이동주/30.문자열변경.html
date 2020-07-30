@@ -1,0 +1,25 @@
+<html>
+<body>
+    <script>
+        var price = "2,000원";
+        var print1 = price.slice(0, 5); //0번째 인덱스부터 ~ 5개 출력 
+        var print2 = price.substring(1, 4); // 1번째 인덱스 ~ 4번째 인덱스
+        var print3 = price.substr(1, 4); // 1번째 인덱스 ~ 4 개
+        var print4 = price.replace(',', ''); // 앞에 있는 것을 있는 것으로 바꾼다.
+        //var print4 = price.replace(/0/gi, '9'); 앞에 있는 것을 뒤에 있는 것으로 바꾼다.
+        var price5 = price.replace(',', '').replace('원', '') * 1;
+        
+        
+        console.log(print1);
+        console.log(print2);
+        console.log(print3);
+        console.log(print4);
+        console.log(price5);
+
+        var result = price.replace(',', '').replace('원', '') * 1;
+        
+        
+        console.log(result);
+    </script>
+</body>
+</html>
