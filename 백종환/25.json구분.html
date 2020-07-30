@@ -1,0 +1,84 @@
+<html>
+<head>
+    <style>
+        #list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 20px;
+            width: 800px;
+            margin: 50px auto;
+        }
+        #list .img{
+            height: 300px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: top center;
+        }
+    </style>
+</head>
+<body>
+    <div id="list"></div>
+    <script>
+        var list = document.getElementById('list');
+        var team = [
+            { id: 1, name: "메시", level: 10, src: '메시.jpg'},
+            { id: 2, name: "호나우지뉴", level:8, src: '호나우지뉴.jpg'},
+            { id: 3, name: "수아레스", level:9, src: '수아레스.jpg'},
+            { id: 4, name: "벤제마", level:7, src: '벤제마.jpg'},
+            { id: 5, name: "네이마르", level:8, src: '네이마르.jpg'},
+            { id: 6, name: "펠레", level:9, src: '펠레.jpg'}
+        ];
+
+        // var newTeam = team.map(item => item.name);
+        
+        var age = [20, 30, 40, 50, 60];
+        var newAge = age.map(item => item +"레벨");
+
+       
+        var fivePlus = age.map(item => item + 5);
+        console.log(fivePlus);
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // print();
+
+        // var name, age, src, txt, html = "";
+
+        // function print() {
+        //     html = "";
+        //     for(var i = 0; i < team.length; i++) {
+        //         name = team[i].name;
+        //         level = team[i].level;
+        //         src = team[i].src;
+
+        //         txt = `
+        //             <div class="item">  
+        //                 <div class="img" style="background-image: url('img/${src}');"></div>
+        //                 <h1 class="name">${name}</h1>
+        //                 <div>${level}레벨</div>
+        //             </div>
+        //             `;  
+        //         html += txt;
+        //     }
+        //     list.innerHTML = html;
+        // }
+            // console.log(team[4].src);
+    </script>
+</body>
+</html>
