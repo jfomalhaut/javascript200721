@@ -1,0 +1,21 @@
+<html>
+<body>
+    <script>
+        var price = "2,000원";
+        var print1 = price.slice(0, 5); //slice 문자, 배열 다 사용가능 //0번쨰 인데스 ~ 5개 출력
+        var print2 = price.substring(1, 4); // 1번째 인덱스 ~ 4번째 인덱스
+        var print3 = price.substr(1, 4); // 1번째 인덱스 ~4 번쨰
+        var print4 = price.replace(',', ''); // 앞에 있는 것을 뒤에 있는 것으로 바꾼다.
+        //var print4 = price.replace(/0/gi , '9'); //전체를 바꾸는 식
+        // console.log(print1);
+        // console.log(print2);
+        // console.log(print3);
+        // console.log(print4);
+        // 문제 ,변수 price를 숫자(2000)로 바꿔보세요.
+        var print5 = price.replace(',', '').replace('원','') * 1;
+    
+        console.log(print5);
+
+    </script>
+</body>
+</html>

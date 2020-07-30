@@ -1,0 +1,21 @@
+<html>
+<body>
+    <script>
+        var num = [10, 20, 30, 40, 50];
+        var num1 = [];
+        var value = num1.map(item => item * 10);
+
+        
+
+        var value2 = num1.map((item, index) => {
+            if(index === 2) {
+                return item * 10;
+            } else {
+                return item;
+            }
+        });
+
+        console.log(value2); 
+    </script>
+</body>
+</html>

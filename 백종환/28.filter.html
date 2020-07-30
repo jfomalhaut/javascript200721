@@ -1,0 +1,32 @@
+<html>
+<body>
+    <script>
+        var num = [10, 20, 30, 40, 50];
+        //for 이용하여 35이하 빼기\
+        var num1 = [];
+        for(var i in num){
+            if(35 > num[i]){
+                num1.push(num[i]);
+            }
+        }
+
+        // var numFilter = num.filter(item => item > 35);
+        // var numFilter = num.filter(item => {
+        //     if (item > 35) {
+        //         return item; 
+        //     }
+        // });
+
+        var num2 = [1, 2, 3, 4, 5];
+        // var numFilter = num2.filter(item => item % 2 === 0);
+
+        var numFilter = num2.filter(item => {
+            if (item % 2 === 0){
+                return item;
+            }
+        });
+         
+        console.log(numFilter);
+    </script>
+</body>
+</html>

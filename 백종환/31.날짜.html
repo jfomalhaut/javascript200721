@@ -1,0 +1,33 @@
+<html>
+<body>
+    <script>
+        var yoils =['월', '화', '수', '목', '금', '토', '일'];
+        var to = new Date();
+        var year = to.getFullYear();
+        var month = zero(to.getMonth() + 1);
+        var date = zero(to.getDate());
+        var day = yoil(to.getDay());
+
+        var hour = to.getHours();
+        var min = to.getMinutes();
+        var sec = to.getSeconds();
+        // 초, 분, 시 만들기
+        //숙제
+        // console.log(year, month, date, day, hour, min, sec);
+        console.log(day);
+        var today = `${year}-${month}-${date}`;
+        console.log(today);
+
+        function zero(value) {
+            if (value < 10 ) {
+                return '0' + value;
+            } else {
+                return value;
+            }
+        }
+        function yoil(value1) {
+            return value1;
+        }
+    </script>
+</body>
+</html>
