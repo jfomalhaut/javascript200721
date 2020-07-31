@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var num = [10, 20, 30, 40, 50];
+        // var number = [];
+
+        // for(var i in num) {
+        //     num[i];
+
+        //     if(num[i] > 35) {
+        //         number.push(num[i]);
+        //     }
+        // }
+
+        var num2 = [1, 2, 3, 4, 5];
+    
+
+        var numFilter = num2.filter(item => {
+            //fot문 처럼 필터에 걸러진 값이 돌게된다.
+
+            if(item % 2 == 0 ) {
+                return item;
+                // return은 값을 돌려준다.
+                // numFilter에 값을 돌려준다.
+                /* 즉 numFilter에 돌아가고 반환된 return값이 
+                    차곡차곡 담긴다.
+                */
+                
+            }
+        });
+
+        console.log(numFilter);
+
+        // console.log(number);
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        var num = [10, 20, 30, 40, 50];
+        var newNum = [];
+        // var newNum = num.map(item => item * 10);
+
+        var newNum = num.map((item, index) => {
+                        // 매개변수, 인덱스 자리, 전체데이터
+            if(index === 2) {
+                return item * 10;
+            } else {
+                return item;
+            }
+        } );
+
+        console.log(newNum);
+
+
+
+        // var numplus =[];
+        // for(var i in num) { // num 배열의 개수만큼 도는 것
+
+        //     numplus.push(num[i]*10);
+            
+        //     console.log(i);
+        // }
+        
+
+    </script>
+</body>
+</html>

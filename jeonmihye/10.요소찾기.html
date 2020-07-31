@@ -95,6 +95,10 @@
                     html = html + text;
                  //저장개념 = 보관된 데이터 + 새로운 데이터
                 }
+                if(html === "") {
+                    html = "장바구니가 비어있습니다.";
+                }
+
                 console.log(html);
                 items.innerHTML = html;
                 count.innerHTML = cart.length; // 장바구니 개수 카운트되는 코드를 print();에 넣어주면 print(); 실행 시 장바구니 카운트됨
@@ -114,13 +118,20 @@
 
         function removeAll() { // 장바구니 한 번에 삭제하기
 
-            html="";
-            cart.length = 0;
+            cart = []; // cart를 비워주면 print() for문에서도 0으로 돌아가므로 출력안됨
+            print();
 
-            items.innerHTML = html;
-            count.innerHTML = cart.length;
+            console.log(cart);
+
+            // html="";
+            // cart.length = 0;
+
+            // items.innerHTML = html;
+            // count.innerHTML = cart.length;
 
         }
+
+        
 
 
         // 1. 제거 버튼을 클릭한다 onclick -> remove(); 실행
