@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    h1, h2 {
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+    #clock {
+        color: #767676;
+        font-size: 200px;
+    }
+    #tDate {
+        color: #4b4b4b;
+        font-size: 70px;
+    }
+</style>
+<body>
+    <h1 id="clock"></h1>
+    <h2 id="tDate"></h2>
+
+    <script>
+
+        interClock();
+
+        function interClock() { // 1초마다 setClock 함수 실행
+            
+            setClock(); //초기에 빈화면 대신 함수를 실행해주고,
+            setInterval(setClock, 1000); // 이후 초마다 실행
+        }
+ 
+        function setClock() {
+
+            var clock = document.getElementById('clock');
+            var tDate = document.getElementById('tDate');
+            var ap = "AM" //초기값 AM
+            var to = new Date();
+            var year = to.getFullYear();
+            var month = zero(to.getMonth() + 1);
+            var date = zero(to.getDate());
+            var day = zero(to.getDay());
+            var hour = zero(to.getHours());
+            var min = zero(to.getMinutes());
+            var sec = zero(to.getSeconds());
+            var today1;
+            var today2;
+        
+            if(hour >= 12) { // hour가 12이상이면 12를 빼준다.
+                ap = "PM" // 오후이므로 PM으로 바꿔준다.
+                hour = zero(to.getHours()-12); // 14시면 2시로 반환
+            }
+
+            if(sec >= 50) { // sec 초 단위가 50이상이면 
+                sec = `<span style="color:#E16464;">${sec}</span>` 
+                // h1 태그 안에 span 태그를 넣어 span의 글자색을 빨간색으로 바꿔준다.
+            }
+
+            today1 = `${hour}:${min}:${sec}<span style='font-size:70px;'>${ap}</span></br>`;
+            today2 = `${year}년 ${month}월 ${date}일 `;
+            
+            clock.innerHTML = today1
+            tDate.innerHTML = today2
+        }
+
+        function zero(value) {
+
+            if(value < 10) { // 값이 10 미만이면
+                return "0" + value; // 값이 한자리라는 뜻이므로 앞에 '문자' '0'을 넣어준다.
+                                    // 숫자 0을 넣으면 더해져버리므로 표기가 안 됨.
+            }
+            return value; // 리턴값을 zero 함수에 담는다.
+        }
+        
+
+    </script>
+</body>
+</html>

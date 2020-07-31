@@ -10,20 +10,25 @@
         var age = [10, 20, 30, 40, 50];
         var newAge = [];
         var index = 2;
+        var value;
 
+
+        // 특정 인덱스 값 바꾸기
         for(var i = 0; i < age.length; i++) {
 
-            if(i === index) {
-                newAge.push(age[i] + 5);
+            if(i === index) { // i가 2면
+                newAge.push(age[i] + 5); // age[2]에만 +5
             }else {
-                newAge.push(age[i]);
+                newAge.push(age[i]); // 아니면 다른 인덱스들(age[i])은 그대로 배열에 담는다.
             }
             console.log(newAge);
         }
 
 
         for(var i = 0; i < age.length; i++) {
+                
             value = age[i];
+
             if(i === 2) {
                 value = age[i] +5;
             }

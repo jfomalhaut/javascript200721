@@ -13,13 +13,14 @@
 
         for(var i = 0; i < age.length; i++) {
 
-            if(i !== 2) {
-                newAge2.push(age[i]);
+            // age[2]를 제외하고 배열에 추가된다.
 
+            if(i !== 2) { // 2면 newAge2 배열에 age[i]를 추가하지 않는다.
+                newAge2.push(age[i]);
             }
 
         }
-        console.log(newAge);
+        console.log(newAge2);
 
     </script>
 </body>
