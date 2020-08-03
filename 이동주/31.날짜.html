@@ -8,9 +8,9 @@
         var date = zero(to.getDate());
         var day = getYoil(to.getDay()) + "요일";
 
-        var hour = to.getHours();
-        var min = to.getMinutes();
-        var sec = to.getSeconds();
+        var hour = getTimes(to.getHours());
+        var min = getTimes(to.getMinutes());
+        var sec = getTimes(to.getSeconds());
 
         console.log(day);
         
@@ -28,6 +28,10 @@
         function getYoil (yoil) {
 			return yoils[yoil];
 		}
+
+        function getTimes (time) {
+            return time; 
+        }
         
     </script>
 </body>

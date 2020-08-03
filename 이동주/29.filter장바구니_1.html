@@ -1,0 +1,18 @@
+<html>
+<body>
+    <script>
+        var cart = [
+            {id: 1, name: '나이키', check: true},
+            {id: 2, name: '아디다스', check: true},
+            {id: 3, name: '리복', check: false},
+            {id: 4, name: '컨버스', check: false},
+            {id: 5, name: '언더아머', check: true},
+            {id: 6, name: '카파', check: false}
+        ];
+
+        var newCart = cart.filter(item => !item.check);
+
+        console.log(newCart);
+    </script>
+</body>
+</html>
