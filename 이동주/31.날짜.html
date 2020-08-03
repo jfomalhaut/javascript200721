@@ -1,23 +1,63 @@
 <html>
+<head>
+    <style>
+        *{margin: 0; padding: 0; text-align: center;}
+
+        #clock {
+            color: navy;
+            font-size: 200px;
+        }
+
+        #todayDate {
+            color: blue;
+            font-size: 100px;
+        }
+    </style>
+</head>
 <body>
-    <script>
-        var yoils = ['일', '월', '화', '수', '목', '금', '토'];
-        var to = new Date();
-        var year = to.getFullYear();
-        var month = zero(to.getMonth() + 1);
-        var date = zero(to.getDate());
-        var day = getYoil(to.getDay()) + "요일";
-
-        var hour = getTimes(to.getHours());
-        var min = getTimes(to.getMinutes());
-        var sec = getTimes(to.getSeconds());
-
-        console.log(day);
-        
-        var today = `${year}-${month}-${date}`;
-        
-        console.log(today);
+    <div id="clock"></div>
+    <div id="todayDate"></div>
     
+    <script>
+
+        secondsClock();
+
+        function secondsClock() {
+
+            setClock();
+            setInterval(setClock, 1000);
+        
+        }
+
+        function setClock() {
+            
+            var clock = document.getElementById('clock');
+            var todayDate = document.getElementById('todayDate');
+            var af = "AM";
+            var to = new Date();
+            var year = to.getFullYear();
+            var month = zero(to.getMonth() + 1);
+            var date = zero(to.getDate());
+            var day = zero(to.getDay()) + "요일";
+            var hour = zero(to.getHours());
+            var min = zero(to.getMinutes());
+            var sec = zero(to.getSeconds());
+            var realToday;
+            var realToday1;
+
+            if (hour >= 12) {
+                af = "PM";
+                hour = zero(to.getHours() - 12);
+            }
+
+            realToday = `${hour}:${min}:${sec}<span style='font-size:100px;'>${af}</span></br>`;
+            realToday1 = `${year}년-${month}월-${date}일`;
+
+            clock.innerHTML = realToday;
+            todayDate.innerHTML = realToday1;
+        }
+
+        
         function zero(value) {
             if (value < 10) {
                 return "0" + value;
@@ -25,14 +65,7 @@
             return value;   
         }
 
-        function getYoil (yoil) {
-			return yoils[yoil];
-		}
-
-        function getTimes (time) {
-            return time; 
-        }
-        
+      
     </script>
 </body>
 </html>
