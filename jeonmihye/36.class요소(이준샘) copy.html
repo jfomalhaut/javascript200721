@@ -1,0 +1,80 @@
+<html>
+<style>
+	*{ margin: 0; padding: 0; }
+	.container {
+		position: relative;
+		height: 400px;
+	}
+	.banner {
+		height: 400px;
+		width: 100%;
+		position: absolute;
+		left: 0; top: 0;
+		background-size: cover;
+		background-position: center;
+		transition: .2s;
+		opacity: 0;
+	}
+	.banner:nth-child(1){ background-image: url('https://www.subway.co.kr/upload/banner/00_%EC%8D%A8%EB%B8%8C%EC%9B%A8%EC%9D%B4_Main_02_20200629104654697.jpg'); }
+	.banner:nth-child(2){ background-image: url('https://www.subway.co.kr/upload/banner/main_PC_1920x440_20200626052759013.jpg'); }
+	.banner:nth-child(3){ background-image: url('https://www.subway.co.kr/upload/banner/main_PC_1920x440_20200706054334328.jpg'); }
+
+	.active { opacity: 1;}
+
+	.box {
+        position: absolute;
+        right: 5%;
+        bottom: 10%;
+    }
+
+    .box > button {
+        padding: 10px;
+        font-size: 20px;
+    }
+</style>
+<body>
+	<div class="container">
+		<div class="banner active"></div>
+		<div class="banner"></div>
+		<div class="banner"></div>
+
+		<div class="box">
+            <button id="Bprev">이전</button>
+            <button id="Bnext">다음</button>
+			<button id="Bstop">||</button>
+        </div>
+	</div>
+	<script>
+        var Bprev = document.getElementById('Bprev');
+        var Bnext = document.getElementById('Bnext');
+        var Bstop = document.getElementById('Bstop');
+		var Bstar = document.getElementById('Bstart');
+		var banners = document.getElementsByClassName('banner');
+		var index = 0;
+		var mindex;
+
+		Bstop.addEventListener('click', stopSlide);
+
+		slide = setInterval(function() {
+			next();
+		}, 1000);
+
+		function next() {
+			banners[index].classList.remove('active');
+			index++;
+			index = index % banners.length; // 나머지값이 순서대로 0, 1, 2
+			Bprev.onclick = function() {
+				mindex = banners[index] - 1;
+        		console.log(index);
+			}
+
+			banners[index].classList.add('active');
+		}
+
+        function stopSlide() {
+        	clearInterval(slide); //매개변수로 인덱스값을 가져와보자....
+        }
+
+	</script>
+</body>
+</html>
