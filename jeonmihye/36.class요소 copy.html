@@ -7,6 +7,7 @@
 </head>
 <style>
     * {margin: 0; padding: 0;}
+
     .container {
         position: relative;
         height: 400px;
@@ -33,40 +34,64 @@
     .active {
         opacity: 1;
     }
+    .box {
+        position: absolute;
+        right: 5%;
+        bottom: 10%;
+    }
+
+    .box > button {
+        padding: 10px;
+        font-size: 20px;
+    }
 </style>
+<!-- 다음 이전 작동멈춤(<> \\) 버튼 만들기 숙제 -->
 <body>
     <div class="container">
         <div class="banner active"></div>
         <div class="banner"></div>
         <div class="banner"></div>
-    </div>
-    <script>
-        var banner= document.getElementsByClassName('banner');
-        var 
-        var index = 0;
 
+        <div class="box">
+            <button id="prev">이전</button>
+            <button id="next">다음</button>
+            <button id="stop">일시정지</button>
+        </div>
+    </div>
+
+    <script>
+
+        var prev = document.getElementById('prev');
+        var next = document.getElementById('next');
+        var stop = document.getElementById('stop');
+        var banner= document.getElementsByClassName('banner');
+        var index = 0;
+        var slide;
+
+
+        // prev.addEventListener('click', );
+        stop.addEventListener('click', stopSlide);
         
         console.log(banner); //class는 여러 개를 만들 수 있어서 배열로 표기됨 
 
-        //다음 이전 작동멈춤(<> \\) 버튼 만들기 숙제
-
         
 
+        slide = setInterval(function() {
+                banner[index].classList.remove('active'); //왜 0번째는 바로 지워지지 않고 보이는가?
+                        // 0부터
+                index++; // 0 +1 = 1
+                if(index > 2) { // index = 1
+                    index = 0;
+                }
+                banner[index].classList.add('active'); // 1번째 인덱스에 클래스 더하기
 
-        setInterval(function() {
-            banner[index].classList.remove('active'); //왜 0번째는 바로 지워지지 않고 보이는가?
-                    // 0부터
-            index++; // 0 +1 = 1
+                console.log(index);
+            }, 1000);
 
-            if(index > 2) { // index = 1
-                index = 0;
-            }
+        function stopSlide() {
+            clearInterval(slide); //매개변수로 인덱스값을 가져와보자....
+        }
 
-            banner[index].classList.add('active'); // 1번째 인덱스에 클래스 더하기
-
-            console.log(index);
-        }, 1000);
-    
-    </script>
+    </script
 </body>
 </html>
