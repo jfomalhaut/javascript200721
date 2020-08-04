@@ -1,0 +1,58 @@
+<html>
+<style>
+	.container {
+		position: relative;
+		height: 400px;
+	}
+	.banner {
+		height: 400px;
+		width: 100%;
+		background-size: cover;
+		background-position: center;
+		position: absolute;
+		left: 0; top: 0;
+		opacity: 0;
+		transition: .2s;
+	}
+	.active {
+		opacity: 1;
+	}
+	.banner:nth-child(1){background-color: tomato;}
+	.banner:nth-child(2){background-color: yellowgreen;}
+	.banner:nth-child(3){background-color: deepskyblue;}
+	.banner:nth-child(4){background-color: darkgoldenrod;}
+</style>
+<body>
+	<div class="container">
+		<div class="banner active"></div>
+		<div class="banner"></div>
+		<div class="banner"></div>
+		<div class="banner"></div>
+	</div>
+	<button id="start">작동</button>
+	<button id="stop">멈춤</button>
+	<script>
+		var index = 0, interval;
+		var start = document.getElementById('start');
+		var stop = document.getElementById('stop');
+		var banners = document.getElementsByClassName('banner');
+
+		function onStart() {
+			clearInterval(interval);
+			interval = setInterval(function() {
+				banners[index].classList.remove('active');
+				index ++;
+				index = index % banners.length;
+				banners[index].classList.add('active');
+			}, 1000);
+		}
+	
+		function onStop() {
+			clearInterval(interval);
+		}
+
+		start.addEventListener('click', onStart);
+		stop.addEventListener('click', onStop);
+	</script>
+</body>
+</html>
