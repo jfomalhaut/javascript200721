@@ -1,0 +1,30 @@
+<html>
+<body>
+    <h1 id="clock">00:00:00</h1>
+    <script>
+        var oClock = document.getElementById("clock");
+        
+        function clock() {
+            var nowDate = new Date();
+            var hours = nowDate.getHours();
+            var minutes = zero(nowDate.getMinutes());
+            var seconds = zero(nowDate.getSeconds());
+            oClock.innerHTML = `${hours}:${minutes}:${seconds}`;
+        }
+
+        function zero(value) {
+            if (value < 10 ) {
+                return '0' + value;
+            } else {
+                return value;
+            }
+        }
+
+        function init() {
+            clock();
+            setInterval(clock, 1000);
+        }
+        init();
+    </script>
+</body>
+</html>

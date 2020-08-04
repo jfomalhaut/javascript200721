@@ -1,0 +1,66 @@
+<html>
+<body>
+    <h1>
+        <span>획득 기술 : </span>
+        <span id = "count">0</span>
+    </h1>
+    <div class="button">
+        <button onclick = "elementSkill('energy dagger')">energy dagger</button>
+        <button onclick = "elementSkill('repell wall')">repell wall</button>
+        <button onclick = "elementSkill('spear')">(part jump)spear</button>
+        <button onclick = "elementSkill('nightmare arrow')">nightmare arrow</button>
+        <button onclick = "elementSkill('spiral ball')">sprial ball</button>
+    </div>    
+    <div id='items'></div>
+    <script>
+        var index  = "";
+        var count1 = 1;
+        var skill = [];
+        var count = document.getElementById('count');
+        var items = document.getElementById('items');
+        // // 클릭한 버튼 배열에 넣기 
+        // function elementSkill(category) {
+        //     skill.push(category);
+        //     console.log(skill);
+        // }
+
+        // 중복된 함수 체크 후 다시 담기지 않게 하기
+            function elementSkill(category) {
+                index = skill.indexOf(category);
+                if(-1 === index) { //배열 안에 없는 데이터일 때 -1
+                    skill.push(category);
+                    print();
+                } else {
+                    alert('중복 선택 불가!');
+                }
+            }
+            
+            function print() {
+                html = "";
+                for(var i = 0; i < skill.length; i ++) {
+                    detail =
+                        `<div class="item">
+                            <div class="name">${skill[i]}
+                            <button class="up" onclick="up()">▲</button></div>
+                            <div class="point">포인트 : ${count1}
+                            <button class="down" onclick="down()">▼</button>
+                        </div>`;
+                    html = html + detail;
+                }
+                items.innerHTML = html;
+                count.innerHTML = skill.length;
+            }
+            function up() {
+                count1 =+ 1;
+              
+            }
+
+            function down() {
+                count1 =- 1;
+               
+            }
+            
+         
+    </script>
+</body>
+</html>
