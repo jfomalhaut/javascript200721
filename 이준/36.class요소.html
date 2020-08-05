@@ -37,7 +37,7 @@
 	</div>
 	<script>
 
-		var index = 0, interval;
+		var index = 0, interval, auto = false;
 		var banners = document.getElementsByClassName('banner');
 		var start = document.getElementById('start');
 		var stop = document.getElementById('stop');
@@ -45,13 +45,16 @@
 		var prev = document.getElementById('prev');
 
 		function autoPlay() {
-			stopAutoPlay();
-			interval = setInterval(function() {
-				nextSlide();
-			}, 1000);
+			if (!auto) {
+				auto = true;
+				interval = setInterval(function() {
+					nextSlide();
+				}, 1000);
+			}
 		}
 
 		function stopAutoPlay() {
+			auto = false;
 			clearInterval(interval);
 		}
 
@@ -62,10 +65,19 @@
 			banners[index].classList.add('active');
 		}
 
+		function prevSlide() {
+			banners[index].classList.remove('active');
+			index--;
+			if (index < 0) {
+				index = 2;
+			}
+			banners[index].classList.add('active');
+		}
+
 		start.addEventListener('click', autoPlay);
 		stop.addEventListener('click', stopAutoPlay);
 		next.addEventListener('click', nextSlide);
-		// stop.addEventListener('click', stopAutoPlay);
+		prev.addEventListener('click', prevSlide);
 
 	</script>
 </body>
