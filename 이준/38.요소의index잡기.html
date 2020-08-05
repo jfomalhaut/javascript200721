@@ -42,20 +42,22 @@
 	<script>
 		var index;
 		var bullets = document.querySelectorAll('.bullet');
+		var banners = document.querySelectorAll('.banner');
 
 		bullets.forEach(function(element, i) {
 			element.addEventListener('click', function(){
-				removeAllClass('active');
-				bullets[i].classList.add('active');
+				removeAllClass(bullets, 'active');
+				removeAllClass(banners, 'activeBanner');
+				element.classList.add('active');
+				banners[i].classList.add('activeBanner');
 			});
 		});
 
-		function removeAllClass(_class) {
-			bullets.forEach(function(element) {
+		function removeAllClass(_selector, _class) {
+			_selector.forEach(function(element) {
 				element.classList.remove(_class);
 			});
 		}
-
 
 	</script>
 </body>
