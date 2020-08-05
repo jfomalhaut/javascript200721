@@ -20,6 +20,8 @@
 	.banner:nth-child(3){ background-image: url('https://www.subway.co.kr/upload/banner/main_PC_1920x440_20200706054334328.jpg'); }
 
 	.active { opacity: 1;}
+	.btns { margin: 50px 0; text-align: center;}
+	button { font-size: 30px; margin: 0 10px; padding: 10px; }
 </style>
 <body>
 	<div class="container">
@@ -27,21 +29,43 @@
 		<div class="banner"></div>
 		<div class="banner"></div>
 	</div>
+	<div class="btns">
+		<button id="prev">이전</button>
+		<button id="start">시작</button>
+		<button id="stop">정지</button>
+		<button id="next">다음</button>
+	</div>
 	<script>
 
-		var index = 0;
+		var index = 0, interval;
 		var banners = document.getElementsByClassName('banner');
+		var start = document.getElementById('start');
+		var stop = document.getElementById('stop');
+		var next = document.getElementById('next');
+		var prev = document.getElementById('prev');
 
-		setInterval(function() {
-			next();
-		}, 1000);
+		function autoPlay() {
+			stopAutoPlay();
+			interval = setInterval(function() {
+				nextSlide();
+			}, 1000);
+		}
 
-		function next() {
+		function stopAutoPlay() {
+			clearInterval(interval);
+		}
+
+		function nextSlide() {
 			banners[index].classList.remove('active');
 			index++;
 			index = index % banners.length;
 			banners[index].classList.add('active');
 		}
+
+		start.addEventListener('click', autoPlay);
+		stop.addEventListener('click', stopAutoPlay);
+		next.addEventListener('click', nextSlide);
+		// stop.addEventListener('click', stopAutoPlay);
 
 	</script>
 </body>
