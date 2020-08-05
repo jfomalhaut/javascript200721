@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .bullet {
+        width: 300px;
+        height: 300px;
+        background: darkgray;
+        margin: 10px;
+        display: inline-block;
+        font-size: 50px;
+        color: white;
+        font-weight: bold;
+        line-height: 300px;
+        text-align: center;
+    }
+    .active {
+        background: darkorange;
+    }
+    .banners {
+        position: relative;
+        height: 300px;
+    }
+    .banner {
+        position: absolute; left: 0; top: 0;
+        width: 100%; color: white; font-size: 100px;
+        font-weight: bold; line-height: 300px; text-align: center;
+        height: 300px; opacity: 0;
+    }
+
+    .banner:nth-child(1) {
+        background: tomato;
+    }
+
+    .banner:nth-child(2) {
+        background: yellowgreen;
+    }
+
+    .banner:nth-child(3) {
+        background: deepskyblue;
+    }
+    .activeBnner {
+        opacity: 1;
+    }
+</style>
+<body>
+    <div class="banners">
+        <div class="banner activeBnner">1</div>
+        <div class="banner">2</div>
+        <div class="banner">3</div>
+    </div>
+    <div class="container">
+        <div class="bullet active">1</div>
+        <div class="bullet">2</div>
+        <div class="bullet">3</div>
+    </div>
+    <script>
+        var index;
+        var bullet = document.querySelectorAll('.bullet'); //클래스는 배열형성
+        var banner = document.querySelectorAll('.banner');
+
+        bullet.forEach(function (element, i) {
+                                //매개변수 같은 역할, 인덱스자리
+                                //배너 배너 배너가 된다.
+            element.addEventListener('click', function() {
+                removeAllClass(bullet, 'active'); // 액티브라는 클래스를 지워줘!
+                removeAllClass(banner, 'activeBnner');
+                element.classList.add('active'); // bullets의 함수기 때문에 bullet = element(매개변수..)
+                // bullet[i].classList.add('active');
+                banner[i].classList.add('activeBnner');
+                // bullet[i].classList.remove('active')
+                // element.classList.remove('active') 같은 내용! element는 이전의 조개, 새우 같은 item 역할
+            });
+        });
+
+        function removeAllClass(_selector,_class) { //어떤 매개변수가 와도 지워지게!
+            _selector.forEach(function(element) {
+                element.classList.remove(_class);
+            });
+        }
+
+        // function removeAllClass2(_class) {
+        //     banner.forEach(function(element) {
+        //         element.classList.remove(_class);
+        //     });
+        // }
+        
+
+
+    </script>
+</body>
+</html>

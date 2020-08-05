@@ -20,6 +20,8 @@
 	.banner:nth-child(3){ background-image: url('https://www.subway.co.kr/upload/banner/main_PC_1920x440_20200706054334328.jpg'); }
 
 	.active { opacity: 1;}
+	.btns { margin: 50px 0; text-align: center;}
+	button { font-size: 30px; margin: 0 10px; padding: 10px; }
 </style>
 <body>
 	<div class="container">
@@ -27,21 +29,70 @@
 		<div class="banner"></div>
 		<div class="banner"></div>
 	</div>
+	<div class="btns">
+		<button id="prev">이전</button>
+		<button id="start">시작</button>
+		<button id="stop">정지</button>
+		<button id="next">다음</button>
+	</div>
 	<script>
 
-		var index = 0;
+		var index = 0, interval, auto = false; //auto는 돌아가고 있는지 아닌지 체크하기 위해
 		var banners = document.getElementsByClassName('banner');
+		var start = document.getElementById('start');
+		var stop = document.getElementById('stop');
+		var next = document.getElementById('next');
+		var prev = document.getElementById('prev');
 
-		setInterval(function() {
-			next();
-		}, 1000);
+		function autoPlay() {
+			if(!auto) {
+			auto = true;
+			clearInterval(interval); // 인터넷이 느릴 경우 버그 때문에 넣어주는 게 좋음
+			interval = setInterval(function() {
+				nextSlide();
+			}, 1000);
+			}
+		}
+
+		function stopAutoPlay() {
+			auto = false;
+			clearInterval(interval);
+		}
 
 		function next() {
-			banners[index].classList.remove('active');
+
+			banners[index].classList.remove('active'); //1초 뒤에 실행되므로, 
 			index++;
-			index = index % banners.length; // 나머지값이 순서대로 0, 1, 2
+			index = index % banners.length;
 			banners[index].classList.add('active');
 		}
+
+		function nextSlide() {
+			clearInterval(interval);
+			if(auto) {
+				autoPlay();
+			}
+		}
+
+		function prevSlide() {
+			clearInterval(interval);
+			banners[index].classList.remove('active'); //위에서부터 index가 내려온다.
+			index--;
+			if(index < 0) {
+				index = 2; 
+			}
+			banners[index].classList.add('active');
+			console.log(index);
+			if(auto) {
+				autoPlay();
+			}
+		}
+
+		start.addEventListener('click', autoPlay);
+		stop.addEventListener('click', stopAutoPlay);
+		next.addEventListener('click', nextSlide); // nextSlide는 interval을 버튼 누르는 순서대로 수동으로 해주는 것이다.
+		prev.addEventListener('click', prevSlide);
+		// stop.addEventListener('click', stopAutoPlay);
 
 	</script>
 </body>
