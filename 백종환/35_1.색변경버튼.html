@@ -1,0 +1,63 @@
+<html>
+<style>
+    *{margin: 0; padding: 0;}
+    .container {
+        position: relative;
+        height: 400px;
+    }
+    .banner {
+        height: 400px;
+        width: 100%;
+        position: absolute;
+        left: 0; top: 0;
+        background-size: cover;
+        background-position: center;
+        transition: .2s;
+        opacity: 0;
+    }
+    .red {
+        background: tomato !important;
+    }
+
+    .banner:nth-child(1){ background-color: hotpink;}
+    .banner:nth-child(2){ background-color: red;}
+    .banner:nth-child(3){ background-color: orange;}
+    
+
+    .active { opacity: 1;}
+</style>    
+<body>
+    <div class="container">
+        <div class="banner active"></div>
+        <div class="banner"></div>
+        <div class="banner"></div>
+    </div>
+        <button id="add">시작</button>
+        <button onclick="location.reload()">정지</button>
+    <script>
+        var banners = document.getElementsByClassName('banner');
+        var index = 0;
+        var add = document.getElementById('add');
+        var remove = document.getElementById('remove');
+
+        add.addEventListener('click', addClass);        
+        remove.addEventListener('click', removeClass);
+
+        function addClass() {
+       setInterval(function() {
+            banners[index].classList.remove('active');
+            index++;
+            index = index % 3;
+            banners[index].classList.add('active');
+            console.log(banners[index]);
+        }, 1000);
+        }
+
+        function removeClass() {
+            
+        }
+       
+
+    </script>
+</body>
+</html>
