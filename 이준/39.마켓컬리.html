@@ -11,10 +11,11 @@
 			margin: 50px auto;
 		}
 		.item {
-			width: 100%; overflow: hidden; cursor: pointer;
+			width: 100%; overflow: hidden;
 			box-shadow: 15px 15px 15px rgba(0,0,0,.3);
 		}
 		.item img { width: 100%; transition: .4s; }
+		.item .img { cursor: pointer; }
 		.item .img:hover img { transform: scale(.97);}
 		.item .img:active img{ transform: scale(.90); }
 		.item .name, .item .price { font-size: 22px; font-weight: bold }
@@ -52,20 +53,24 @@
 		pdt.forEach((element, index) => {
 			eventTag = "";
 			price = new Intl.NumberFormat().format(element.price); // 숫자표기, 콤마 넣는 것
+			
 			if (element.event < element.price) {
 				event = new Intl.NumberFormat().format(element.event);
 				percent = Math.round((element.price - element.event) / element.price * 100);
 				eventTag = `<span class="event">${event}원(${percent}%)</span>`;
 			}
+
 			txt = `
 				<div class="item">
-					<div class="img">
-						<img src="img2/${element.src}" />
-					</div>
+					<a href="./40.마켓컬리상세페이지.html?productId=${element.id}">
+						<div class="img">
+							<img src="img2/${element.src}" />
+						</div>
+					</a>
 					<div class="name">${element.name}</div>
 					<div class="price">
 						<span>${price}원</span>
-						${eventTag}
+						${eventTag} 
 					</div>
 					<div class="cart">담기</div>
 				</div>
