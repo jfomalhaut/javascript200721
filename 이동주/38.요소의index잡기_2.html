@@ -1,34 +1,38 @@
 <html>
 <head>
     <style>
-        .bullet{
-            height: 30px;
-            line-height: 30px;
-            width: 30px;
-            color: white;
-            background-color: orangered;
-            display: inline-block;
-            text-align: center;
-        }
-
-        .active {background-color: powderblue;}
-        
-        .banners {position: relative; height: 400px;}
-        
         .banner {
+            width: 100%;
+            height: 440px;
             position: absolute;
             left: 0;
             top: 0;
-            width: 100%;
-            height: 400px;
             opacity: 0;
         }
-
-        .banner:nth-child(1) {background-image: url('./img/1.jpg') }
-        .banner:nth-child(2) {background-image: url('./img/2.jpg')}
-        .banner:nth-child(3) {background-image: url('./img/3.jpg')}        
         
-        .activeBanner {opacity: 1;}
+        .banners {
+            position: relative; 
+            height: 440px;
+        }
+        
+        .bullet {
+            background-color: orangered;
+            width: 30px;
+            height: 30px;
+            color: white;
+            display: inline-block;
+            line-height: 30px;
+            text-align: center;
+        }
+
+        .banner:nth-child(1) {background-image: url('./img/1.jpg');}
+        .banner:nth-child(2) {background-image: url('./img/2.jpg');}
+        .banner:nth-child(3) {background-image: url('./img/3.jpg');}
+        
+        .active {background-color: greenyellow;}
+        
+        .activeBanner{opacity: 1;}
+        
     </style>
 </head>
 <body>
@@ -47,7 +51,8 @@
         var bullets = document.querySelectorAll('.bullet');
         var banners = document.querySelectorAll('.banner');
 
-        bullets.forEach(function(element, i) {
+
+        bullets.forEach(function(element, i){
             element.addEventListener('click', function(){
                 removeAllClass(bullets, 'active');
                 removeAllClass(banners, 'activeBanner');
@@ -55,18 +60,12 @@
                 banners[i].classList.add('activeBanner');
             });
         });
-        
-        // function removeAllBanner(_class) {
-        //     banners.forEach(function(element) {
-        //         element.classList.remove(_class)
-        //     });
-        // }
 
-       function removeAllClass(_selector, _class) {
-           _selector.forEach(function(element) {
+        function removeAllClass(_selector, _class) {
+            _selector.forEach(function(element) {
                 element.classList.remove(_class);
-           });
-       }
+            });
+        }
     </script>
 </body>
 </html>
