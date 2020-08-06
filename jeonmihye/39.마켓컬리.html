@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/items.js"></script>
+</head>
+<style>
+    #container{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 20px;
+        width: 1000px;
+        margin: 50px auto;
+    }
+    .item {
+        padding: 10px;
+    }
+    .item img {
+        width: 100%;
+    }
+    .item .name,
+    .item .price {
+        font-size: 22px;
+    }
+    .item .name {
+        padding: 10px 0;
+        line-height: 25px;
+        height: 50px;
+    }
+    .price { color:red; }
+    .cart {
+        padding: 15px 0;
+        text-align: center;
+        font-size: 18px;
+        cursor: pointer;
+        user-select: none;
+        color: white;
+        background-color: #6335a8;
+    }
+    .cart:active {
+        background-color: #3a196b;
+    }
+</style>
+<body>  
+    <div id="container">
+    </div>
+    <script>
+        
+       var html = "", txt = "", price = 0;
+       var container = document.getElementById('container');
+       var ePrice;
+
+       pdt.forEach((element, index) => {
+            eventTag = "";
+            price = new Intl.NumberFormat().format(element.price); //숫자표기 (리턴함수)
+            if(element.event < element.price) {
+                event = new Intl.NumberFormat().format(element.event);
+                percent = Math.round((element.price - element.event) / element.price * 100);
+                eventTag = `<span class="event">${event}원(${percent}%)</span>`;
+            }
+
+            txt = `
+                <div class="item">
+                    <div class="img">
+                        <img src="img2/${element.src}" />
+                    </div>
+                    <div class="name">${element.name}</div>
+                    <div class="price">${price}원 
+                        <span class="event">${ePrice}</span>
+                    </div>
+                    
+
+                    <div class="cart">담기</div>
+                </div>
+            `;
+            html += txt;
+    });
+
+    container.innerHTML = html;
+
+
+    </script>
+</body>
+</html>
