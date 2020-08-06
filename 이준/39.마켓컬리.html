@@ -1,9 +1,79 @@
 <html>
 <head>
-	<script src=""></script>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<script src="./js/items.js"></script>
+	<style>
+		#container {
+			display: grid;
+			grid-template-columns: repeat(3 ,1fr);
+			grid-gap: 30px;
+			width: 1000px;
+			margin: 50px auto;
+		}
+		.item {
+			width: 100%; overflow: hidden; cursor: pointer;
+			box-shadow: 15px 15px 15px rgba(0,0,0,.3);
+		}
+		.item img { width: 100%; transition: .4s; }
+		.item .img:hover img { transform: scale(.97);}
+		.item .img:active img{ transform: scale(.90); }
+		.item .name, .item .price { font-size: 22px; font-weight: bold }
+		.item .name {
+			padding: 10px;
+			line-height: 25px;
+			height: 50px;
+		}
+		.price { color: gray; padding: 10px; }
+		.cart {
+			padding: 15px 0;
+			text-align: center;
+			font-size: 18px;
+			cursor: pointer;
+			user-select: none;
+			color: white;
+			background-color: #6335a8;
+		}
+		.cart:active {
+			background-color: #3a196b;
+		}
+		.event {
+			color: darkred;
+		}
+	</style>
 </head>
 <body>
+	<div id="container"></div>
+
 	<script>
+
+		var html = "", txt = "";
+		var eventTag = "", price = 0, event = 0, percent = 0;
+		var container = document.getElementById('container');
+		pdt.forEach((element, index) => {
+			eventTag = "";
+			price = new Intl.NumberFormat().format(element.price); // 숫자표기, 콤마 넣는 것
+			if (element.event < element.price) {
+				event = new Intl.NumberFormat().format(element.event);
+				percent = Math.round((element.price - element.event) / element.price * 100);
+				eventTag = `<span class="event">${event}원(${percent}%)</span>`;
+			}
+			txt = `
+				<div class="item">
+					<div class="img">
+						<img src="img2/${element.src}" />
+					</div>
+					<div class="name">${element.name}</div>
+					<div class="price">
+						<span>${price}원</span>
+						${eventTag}
+					</div>
+					<div class="cart">담기</div>
+				</div>
+			`;
+			html += txt;
+		});
+
+		container.innerHTML = html;
 
 	</script>
 </body>
