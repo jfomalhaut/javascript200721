@@ -1,0 +1,98 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <script src="./js/items.js"></script>
+    <style>
+        #container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 20px;
+            width: 1000px;
+            margin: 50px auto;
+        }
+
+        .item {
+			width: 100%; overflow: hidden; cursor: pointer;
+			box-shadow: 15px 15px 15px rgba(0,0,0,.3);
+		}
+       
+        .item img {
+            width: 100%;
+        }
+
+        .item .name, item .price {font-size: 22px;}
+
+
+        .item .name {
+            padding: 10px 0;
+            line-height: 25px;
+            height: 50px;
+        }
+        
+        .price {color: navy;}
+
+        .cart {
+            padding: 15px 0;
+            text-align: center;
+            font-size: 18px;
+            cursor: pointer;
+            user-select: none;
+            color: white;
+            background-color: purple;
+        }
+
+        .cart:active {
+            background-color: violet;
+        }
+
+        .event {
+            color: darkred;
+            font-weight: bold;
+            }
+    </style>
+</head>
+<body>
+    <div id="container">
+       
+    </div>
+    <script>
+        var html = "", text = ""; 
+        var eventTag = "", price = 0, percent = 0, event = 0;
+        var container = document.getElementById('container');
+        
+        pdt.forEach((element, index) => {
+            eventTag = "";
+            price = new Intl.NumberFormat().format(element.price); // 숫자 표기, 콤마를 넣어주는것 
+            if (element.event < element.price) {
+                event = new Intl.NumberFormat().format(element.event);
+                percent = Math.round((element.price - element.event) / element.price * 100);
+                eventTag = `<span class="event">${event}원(${percent}%)</span>`;
+            }
+            txt = `
+                <div class="item">
+                    <a href="./40.마켓컬리상세페이지.html?productId=${element.id}">
+                        <div class="img">
+                            <img src="img2/${element.src}"/>
+                        </div>
+                    </a>
+                    <div class="name">${element.name}</div>
+                    <div class="price">
+                        <span>${price}원</span>
+                        ${eventTag}
+                    </div>
+                    <div class="cart">담기</div>
+                </div>
+            `;
+           
+            html += txt;
+        });
+        
+        container.innerHTML = html;
+
+        
+
+
+
+    </script>
+</body>
+</html>
