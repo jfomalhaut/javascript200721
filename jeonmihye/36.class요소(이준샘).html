@@ -59,16 +59,12 @@
 			clearInterval(interval);
 		}
 
-		function next() {
-
+		function nextSlide() {
+			clearInterval(interval);
 			banners[index].classList.remove('active'); //1초 뒤에 실행되므로, 
 			index++;
 			index = index % banners.length;
 			banners[index].classList.add('active');
-		}
-
-		function nextSlide() {
-			clearInterval(interval);
 			if(auto) {
 				autoPlay();
 			}
