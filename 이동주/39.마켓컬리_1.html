@@ -23,6 +23,7 @@
 			padding: 10px;
 			line-height: 25px;
 			height: 50px;
+            display: inline-block;
 		}
 		.price { color: gray; padding: 10px; }
 		.cart {
@@ -40,6 +41,16 @@
 		.event {
 			color: darkred;
 		}
+
+        .newTag {
+            background-color: red;
+            width: 38px;
+            height: 20px;
+            text-align: center;
+            color: white;
+            font-size: 18px;
+            line-height: 23px;
+        }
     </style>
 </head>
 <body>
@@ -50,6 +61,7 @@
         var html = "", txt = "";
         var eventTag = "", price = 0, percent = 0, event = 0;
         var container = document.getElementById('container');
+        var newTag = "";
 
         pdt.forEach((element, index) => {
             eventTag = "";
@@ -60,6 +72,12 @@
                 percent = Math.round((element.price - element.event) / element.price * 100);
                 eventTag = `<span class="event">${event}원(${percent}%)</span>`;
             }
+
+            newTag = "";
+            if (element.new === true) {
+                newTag = `<span class="newTag">NEW</span>`;
+            }
+
             txt = `
                 <div class="item">
                     <a href="./40.마켓컬리상세페이지.html?productId=${element.id}">
@@ -67,6 +85,7 @@
                             <img src="img2/${element.src}" />
                         </div>
                     </a>
+                    ${newTag}
                     <div class="name">${element.name}</div>
                     <div class="price">
                         <span>${element.price}원</span>
