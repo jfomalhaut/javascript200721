@@ -26,6 +26,9 @@
 	<script src="./js/items.js"></script>
 	<script>
 		var pageUrl = window.location.search.substring(1);
+		if (!pageUrl) {
+			window.location.href = "39.마켓컬리.html";
+		}
 		var _params = pageUrl.split('&');
 		var params = [], items;
 		_params.forEach(element => {
