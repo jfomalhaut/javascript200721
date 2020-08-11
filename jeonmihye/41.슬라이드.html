@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container {
+        position: relative;
+        height: 300px;
+        width: 500px;
+        margin: 200px auto; 
+        border: 2px solid;
+        overflow: hidden;
+    }
+    #wrapper {
+        display: flex;
+        position: absolute;
+        left: 0; top: 0;
+        height: 300px;
+        transition: 0.4s;
+    }
+    .slide {
+        width: 500px;
+        flex-shrink: 0;
+        font-size: 60px;
+        color: #ffffff;
+        line-height: 300px;
+        text-align: center;
+    }
+    .slide:nth-child(1) {
+        background-color: tomato;
+    }
+    .slide:nth-child(2) {
+        background-color: yellowgreen;
+    }
+    .slide:nth-child(3) {
+        background-color: deepskyblue;
+    }
+    .slide:nth-child(4) {
+        background-color: darkorange;
+    }
+    .slide:nth-child(5) {
+        background-color: darkorchid;
+    }
+</style>
+<body>
+    <div class="container" id="container">
+        <div id="wrapper">
+            <div class="slide">1</div>
+            <div class="slide">2</div>
+            <div class="slide">3</div>
+            <div class="slide">4</div>
+            <div class="slide">5</div>
+        </div>
+    </div>
+    <button id="prevBtn">이전</button>
+    <button id="nextBtn">다음</button>
+
+
+    <script>
+
+        // var container = one('#container');
+        // console.log(container);
+        var index = 0;
+        var slide = all('.slide');
+        var prevBtn = one('#prevBtn');
+        var nextBtn = one('#nextBtn');
+        var wrapper = one('#wrapper');
+        var margin = 400;
+        var length = slide.length;
+        var slideWidth = slide[0].offsetWidth;
+        var keyNum;
+
+        function next() {
+            
+            if(index === length -1) return;
+            index++;
+            move();
+            // wrapper.style.left = "-" + index * margin + "px";
+            console.log('next');
+        }
+
+        function prev() {
+            if(index === 0) return;
+            index--;
+            move();
+        }
+        
+        function move() {
+            wrapper.style.left =`-${index * slideWidth}px`;
+        }
+        
+        function onkeydown(event) {
+            console.log(event.keyCode); // 매개변수를 통해 뭘 누르는지 키코드를 알려줌
+            var keyNum = event.keyCode;
+            if(keyNum === 39) {
+                next();
+            } else if(keyNum === 37) {
+                prev();
+            }
+
+        }
+
+        prevBtn.addEventListener('click', prev);
+        nextBtn.addEventListener('click', next);
+        window.addEventListener('keydown', onkeydown);
+
+        function one(ele) {
+            return document.querySelector(ele);
+        }
+
+        function all(ele) {
+            return document.querySelectorAll(ele);
+        }
+    </script>
+</body>
+</html>
