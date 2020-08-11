@@ -3,10 +3,11 @@
 	.container {
 		display: flex;
 		width: 1000px;
-		margin: 50px auto;
+		margin: 50px;
 	}
 	.container > div:nth-child(1) {
 		width: 50%;
+   		padding: 20px;
 	}
 	img { width: 100%;}
 </style>
@@ -28,25 +29,30 @@
 		var detailImg = document.getElementById('detailImg');
 		var label = document.getElementById('label');
 		var price = document.getElementById('price');
-		var desc = document.getElementById('desc');
+		var desc = document.getElementById('desc');		
 
 		detailImg.src = `img2/${item.src}`;
 		label.innerHTML = item.name;
-		price.innerHTML= new intl.NumberFormat().format(item.price) + "원";
+		price.innerHTML = new Intl.NumberFormat().format(item.price) + "원";
+		desc.innerHTML = item.desc;
 		
 		function getUrl() {
 			var pageUrl = window.location.search.substring(1); //url에서 ?뒤에 붙는 data값을 가져옴
+			console.log(pageUrl);							  // 값은 productId=1
 
 			if(!pageUrl) {
-				alert("데이터없음"); //consloe로 확인하면 바로 넘어가버려서 눈으로 확인불가
+				alert(pageUrl); //consloe로 확인하면 바로 넘어가버려서 눈으로 확인불가
 				window.location.href="39.마켓컬리.html";
 			}
-			console.log(pageUrl);
-			var value = pageUrl.split('=')[1] * 1;
+			var value = pageUrl.split('=')[1] * 1; //나오는 값은 숫자 1(=1번째 인덱스값)
+			//split는 문자를 잘라서 배열로 넘겨준다.
+			//(2) ["productId", "1"]가 되고, 저기서 [1]번째 인덱스니까 1인데 문자를 숫자로 바꿔야하니 * 1
+			console.log(value);
 			var item = pdt.filter(item => item.id === value)[0];
-			return item;
+			//필터로 걸려서 나오는 게 1줄일 테니까 인덱스 [0]번째!
+			return item; //값을 리턴! ★결국 리턴값은 pdt의 배열 오브젝트 값들 중 필터에 걸린.
+						//하나의 오브젝트 값(pdt는 현재 오브젝트로된 배열임)이 나오는 것임
 		}
-
         
 	</script>
 </body>
