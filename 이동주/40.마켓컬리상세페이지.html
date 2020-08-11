@@ -1,15 +1,15 @@
 <html>
 <head>
     <style>
-        .container{
-            display: flex;
-            width: 1000px;
-            margin: 50px auto;
-        }
-
+       .container {
+		display: flex;
+		width: 1000px;
+		margin: 50px auto;
+	    }
         .container > div:nth-child(1) {
             width: 50%;
         }
+	    img { width: 100%;}
     </style>
 </head>
 <body>
@@ -19,7 +19,7 @@
             <img src="" id="detailImg">
         </div>
         <div>
-            <h1 id="name"></h1>
+            <h1 id="label"></h1>
             <h1 id="price"></h1>
             <h1 id="desc"></h1>
         </div>  
@@ -27,16 +27,19 @@
     <script src="./js/items.js"></script>
     <script>
         var item = getUrl();
-        var detailImg = document.getElementById('detailImg');
+        var image = document.getElementById('detailImg');
         var label = document.getElementById('label');
         var price = document.getElementById('price');
         var desc = document.getElementById('desc');
         
-        detailImg.src = `img2/${item.src}`;
+        image.src = `./img2/${item.src}`;
         label.innerHTML = item.name;
+        price.innerHTML = new Intl.NumberFormat().format(item.price) + "원";
+        desc.innerHTML = item.desc;
+        
         
         function getUrl() {
-            var pageUrl = window.location.search.substring(1);
+            var pageUrl = window.location.search.substring(1);//productId=1
             var value = pageUrl.split('=')[1] * 1;
             var item = pdt.filter(item => item.id === value)[0];
             return item;
