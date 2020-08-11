@@ -22,6 +22,7 @@
 			padding: 10px;
 			line-height: 25px;
 			height: 50px;
+			font-size: 18px;
 		}
 		.price { color: gray; padding: 10px; }
 		.cart {
@@ -39,6 +40,15 @@
 		.event {
 			color: darkred;
 		}
+		.newpd {
+			margin: 0 0 0 10px;
+			padding: 0 5px;
+			color: #fff;
+			font-size: 10px;
+			font-weight: bold;
+			line-height: 10px;
+			background: red;
+		}
 	</style>
 </head>
 <body>
@@ -49,14 +59,22 @@
 		var html = "", txt = "";
 		var eventTag = "", price = 0, event = 0, percent = 0;
 		var container = document.getElementById('container');
+
 		pdt.forEach((element, index) => {
 			eventTag = "";
+			newTag="";
 			price = new Intl.NumberFormat().format(element.price); // 숫자표기, 콤마 넣는 것
+					//Intl.NumberFormat: 각 언어에 맞는 숫자 서식을 적용할 수 있는 객체의 생성자
 			if (element.event < element.price) {
 				event = new Intl.NumberFormat().format(element.event);
 				percent = Math.round((element.price - element.event) / element.price * 100);
 				eventTag = `<span class="event">${event}원(${percent}%)</span>`;
 			}
+
+			if(element.new === true) {
+				newTag = `<span class="newpd">new</span>`;
+			}
+
 			txt = `
 				<div class="item">
 					<a href="./40.마켓컬리상세페이지.html?productId=${element.id}">
@@ -64,10 +82,10 @@
 							<img src="img2/${element.src}">
 						</div>
 					</a>
-					<div class="name">${element.name}</div>
+					<div class="name">${element.name}${newTag}</div>
 					<div class="price">
 						<span>${price}원</span>
-						${eventTag}
+						${eventTag} <!-- if문에서 걸러지면 이 태그가 붙음 -->
 					</div>
 					<div class="cart">담기</div>
 				</div>

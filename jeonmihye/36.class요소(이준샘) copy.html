@@ -60,7 +60,7 @@
 		}, 1000);
 
 		function next() {
-			banners[index].classList.remove('active');
+			banners[index].classList.remove('active'); //interval은 1초 뒤에 시작된다.
 			index++;
 			index = index % banners.length; // 나머지값이 순서대로 0, 1, 2
 			Bprev.onclick = function() {
