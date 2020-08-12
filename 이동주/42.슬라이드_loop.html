@@ -57,6 +57,8 @@
         var slide = all('.slide');
         var nextBtn = one('#next');
         var prevBtn = one('#prev');
+        var pauseBtn = one('#pause');
+        var autoBtn = one('#auto');
         var length = slide.length;
     
         
@@ -113,6 +115,8 @@
               
         nextBtn.addEventListener('click', next);
         prevBtn.addEventListener('click', prev);
+        pauseBtn.addEventListener('click', pause);
+        autoBtn.addEventListener('click', auto);
         
         
         
