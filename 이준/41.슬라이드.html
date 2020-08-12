@@ -69,7 +69,7 @@
 
 		function onKeydown(event) {
 			if (event.keyCode === 37) prev();
-			if (event.keyCode === 39) next();
+			else if (event.keyCode === 39) next();
 		}
 
 		prevBtn.addEventListener('click', prev);

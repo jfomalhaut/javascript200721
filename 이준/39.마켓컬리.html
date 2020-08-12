@@ -47,7 +47,7 @@
 	<div id="container"></div>
 
 	<script>
-
+		var cart = [];
 		var html = "", txt = "";
 		var eventTag = "", price = 0, event = 0, percent = 0;
 		var container = document.getElementById('container');
@@ -73,13 +73,24 @@
 						<span>${price}원</span>
 						${eventTag} 
 					</div>
-					<div class="cart">담기</div>
+					<div class="cart" onclick="addCart(${element.id})">담기</div>
 				</div>
 			`;
 			html += txt;
 		});
 
 		container.innerHTML = html;
+
+		function addCart(item) {
+			var idx = cart.indexOf(item);
+			if (idx === -1) {
+				cart.push(item);
+				localStorage.setItem('cart', cart.join());
+			} else {
+				alert('Already');
+			}
+			
+		}
 
 	</script>
 </body>
