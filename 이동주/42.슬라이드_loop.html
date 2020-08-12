@@ -60,12 +60,23 @@
         var pauseBtn = one('#pause');
         var autoBtn = one('#auto');
         var length = slide.length;
+        var interval;
     
         
         init();
 
         function init() {
             slide[index].style.left = "0%";
+        }
+
+        function auto() {
+            interval = setInterval(function() {
+                next();  
+            }, 1000);
+        }
+
+        function pause() {
+            clearInterval(interval);
         }
 
         function next() { 
