@@ -6,7 +6,6 @@
             height: 500px;
             width: 500px;
             margin: 0 auto;
-            margin-top: 100px;
             border: 2px solid gray;
             box-sizing: border-box;
             overflow: hidden;
@@ -14,8 +13,8 @@
 
         .slide{
             position: absolute;
-            left: 0;
-            top: 0;
+            left: -2px;
+            top: 100%;
             font-size: 200px;
             color: white;
             text-align: center;
@@ -66,10 +65,11 @@
         
         init();
         function init() {
-           slide[index].style.top = "top: 0%"; 
+           slide[index].style.cssText = "top: 0;"; 
         }
         
         function auto() {
+            clearInterval(interval);
             interval = setInterval(function() {
                 next();
             }, 1000);
@@ -86,17 +86,18 @@
             setTimeout(function() {
                 slide[temp].style.cssText = "top: -100%; transition: .4s;";
             }, 20);
+           
             index++;
             index = index % length;
             slide[index].style.cssText = "top: 100%;";
-            setTimeout(function() {
-                if (slide[index].style.offsetTop === slide[index].style.offsetHeight) {
-                    slide[index].style.cssText = "top: 0%; transition: .4s;";
-                }
             
-                setTimeout(function()  {
-                    animate = false;
-                }, 400);    
+            setTimeout(function() {
+                if (slide[index].offsetTop === slide[index].offsetHeight) {
+                    slide[index].style.cssText = "top: 0%; transition: .4s;";
+                    setTimeout(function()  {
+                        animate = false;
+                    }, 400);          
+                }       
             }, 5);
         }
 
@@ -107,6 +108,7 @@
             setTimeout(function() {
                 slide[temp].style.cssText = "top: 100%; transition: .4s;";
             }, 20);
+            
             index--;
             index = index === -1 ? length - 1 : index;
             //index === -1 이 참 일때 => length - 1
@@ -115,13 +117,14 @@
             //       index = length - 1;
             //   }
             slide[index].style.cssText = "top: -100%;";
+            
             setTimeout(function() {
-                if (slide[index].style.cssText === (slide[index].style.cssText * -1)) {
+                if (slide[index].offsetTop === (slide[index].offsetHeight * -1)) {
                     slide[index].style.cssText = "top: 0%; transition: .4s;";
                     setTimeout(function() {
                         animatie = false;
-                    }, 400);
-                }
+                    }, 400);    
+                }    
             }, 5);
         }
         

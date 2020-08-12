@@ -70,6 +70,7 @@
         }
 
         function auto() {
+            clearInterval(interval);
             interval = setInterval(function() {
                 next();  
             }, 1000);
@@ -128,9 +129,6 @@
         prevBtn.addEventListener('click', prev);
         pauseBtn.addEventListener('click', pause);
         autoBtn.addEventListener('click', auto);
-        
-        
-        
     
         
         function one(ele) {
