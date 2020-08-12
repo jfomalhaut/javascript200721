@@ -88,7 +88,7 @@
             }, 20);
             index++;
             index = index % length; //무한loop로 할 수 있게 한다.
-            slide[index].style.cssText = "100%;"; // 다음에 올 슬라이드를 우측으로 보내놓는다.
+            slide[index].style.cssText = "left: 100%;"; // 다음에 올 슬라이드를 우측으로 보내놓는다.
             setTimeout (function() {
                 if(slide[index].offsetLeft === slide[index].offsetWidth) {
                     slide[index].style.cssText = "left: 0%; transition: .4s;"; // 다음에 올 슬라이들를 보이는 화면으로 옮긴다.

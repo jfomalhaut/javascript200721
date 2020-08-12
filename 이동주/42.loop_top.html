@@ -6,8 +6,10 @@
             height: 500px;
             width: 500px;
             margin: 0 auto;
+            margin-top: 100px;
             border: 2px solid gray;
             box-sizing: border-box;
+            overflow: hidden;
         }
 
         .slide{
@@ -25,7 +27,7 @@
         .slide:nth-child(1){background-color: chartreuse;}
         .slide:nth-child(2){background-color: cyan;}
         .slide:nth-child(3){background-color: darkcyan;}
-        .slide:nth-child(4){background-color: seagreen}
+        .slide:nth-child(4){background-color: seagreen;}
         .slide:nth-child(5){background-color: yellowgreen;}
 
         .buttons {
@@ -47,12 +49,94 @@
     <div class="buttons">
         <button id="prev">이전</button>
         <button id="next">다음</button>
-        <button id="start">시작</button>
+        <button id="auto">시작</button>
         <button id="pause">일시정지</button>
     </div>
     
     <script>
-        var index = 0, temp = 0;
-    </script>
+        var index = 0; temp = 0;
+        var animate = false;
+        var nextBtn = one('#next');
+        var prevBtn = one('#prev');
+        var autoBtn = one('#auto');
+        var pauseBtn = one('#pause');
+        var slide = all('.slide');
+        var length = slide.length;
+        var interval;
+        
+        init();
+        function init() {
+           slide[index].style.top = "top: 0%"; 
+        }
+        
+        function auto() {
+            interval = setInterval(function() {
+                next();
+            }, 1000);
+        }
+
+        function pause() {
+            clearInterval(interval);
+        }
+
+        function next() {
+            if (animate) return;
+            animate = true;
+            temp = index;
+            setTimeout(function() {
+                slide[temp].style.cssText = "top: -100%; transition: .4s;";
+            }, 20);
+            index++;
+            index = index % length;
+            slide[index].style.cssText = "top: 100%;";
+            setTimeout(function() {
+                if (slide[index].style.offsetTop === slide[index].style.offsetHeight) {
+                    slide[index].style.cssText = "top: 0%; transition: .4s;";
+                }
+            
+                setTimeout(function()  {
+                    animate = false;
+                }, 400);    
+            }, 5);
+        }
+
+        function prev() {
+            if (animate) return;
+            animate = true;
+            temp = index;
+            setTimeout(function() {
+                slide[temp].style.cssText = "top: 100%; transition: .4s;";
+            }, 20);
+            index--;
+            index = index === -1 ? length - 1 : index;
+            //index === -1 이 참 일때 => length - 1
+            //             이 거짓 일때  => index
+            //   if (index === -1) {
+            //       index = length - 1;
+            //   }
+            slide[index].style.cssText = "top: -100%;";
+            setTimeout(function() {
+                if (slide[index].style.cssText === (slide[index].style.cssText * -1)) {
+                    slide[index].style.cssText = "top: 0%; transition: .4s;";
+                    setTimeout(function() {
+                        animatie = false;
+                    }, 400);
+                }
+            }, 5);
+        }
+        
+        nextBtn.addEventListener('click', next);
+        prevBtn.addEventListener('click', prev);
+        autoBtn.addEventListener('click', auto);
+        pauseBtn.addEventListener('click', pause);
+        
+        function one(ele) {
+            return document.querySelector(ele);
+        } 
+
+        function all(ele) {
+            return document.querySelectorAll(ele);
+        }
+    </script>    
 </body>
 </html>
