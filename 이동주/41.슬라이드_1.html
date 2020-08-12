@@ -1,0 +1,95 @@
+<html>
+<head>
+    <style>
+        .container {
+            position: relative;
+            width: 400px;
+            height: 300px;
+            margin: 50px auto;
+            border: 2px solid;
+            overflow: hidden;
+        }
+
+        #wrapper {
+            display: flex;
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 300px;
+            transition: .4s;
+        }
+
+        .slide {
+            width: 400px;
+            flex-shrink: 0;
+            font-size: 100px;
+            color: white;
+            text-align: center;
+            line-height: 300px;
+        }
+
+        .slide:nth-child(1){background-color: aquamarine;}
+        .slide:nth-child(2){background-color: aqua;}
+        .slide:nth-child(3){background-color: powderblue;}
+        .slide:nth-child(4){background-color: cadetblue;}
+        .slide:nth-child(5){background-color: chartreuse;}
+    </style>
+</head>
+<body>
+    <div class="container" id="container">
+        <div id="wrapper">
+            <div class="slide">1</div>
+            <div class="slide">2</div>
+            <div class="slide">3</div>
+            <div class="slide">4</div>
+            <div class="slide">5</div>
+        </div>
+    </div>
+    <button id="prevBtn">이전</button>
+    <button id="nextBtn">다음</button>
+    <script>
+        var index = 0;
+        var prevBtn = one('#prevBtn');
+        var nextBtn = one('#nextBtn');
+        var slide = All('.slide');
+        var wrapper = one('#wrapper');
+        var length = slide.length;
+        var slideWidth = slide[0].offsetWidth;
+        
+        function prev() {
+            if(index === 0) return
+            index--;
+            move();
+        }
+
+        function next() {
+            if (index === length - 1) return
+            index++;
+            move();
+        }
+
+        function move() {
+            wrapper.style.left = `-${index * slideWidth}`;
+        }
+        
+        function onkeyDown(ev) {
+            switch(ev.keyCode) {
+                case 37 : prev(); break;
+                case 39 : next(); break;
+            }
+        }
+        
+        prevBtn.addEventListener('click', prev);
+        nextBtn.addEventListener('click', next);
+        window.addEventListener('keydown', onkeyDown);
+
+        function one(ele) {
+            return document.querySelector(ele);
+        }
+
+        function All(ele) {
+            return document.querySelectorAll(ele);
+        }
+    </script>
+</body>
+</html>
