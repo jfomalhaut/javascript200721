@@ -13,7 +13,7 @@
         margin: 0 auto;
         border: 2px solid gray;
         box-sizing: border-box;
-        /* overflow: hidden; */
+        overflow: hidden;
 
     }
     .slide {
@@ -71,18 +71,36 @@
         var slide = all('.slide'); //슬라이드가 여러 개라 올로 잡음
         var prevBtn = one('#prev');
         var nextBtn = one('#next');
+        var autoBtn = one('#auto');
+        var pauseBtn = one('#pause');
         var length = slide.length;
         var width = slide.length;
         var keyNum;
+        var interval;
 
+        //초기화면
         init();
-
         function init() {
             slide[index].style.left = "0%";
         }
 
+        //자동재생
+        function auto() {
+            interval = setInterval(function() {
+                next();
+            }, 1000);
+            console.log('dd');
+        }
+
+        //정지
+        function pause() {
+            clearInterval(interval);
+        }
+        
+        //이전 버튼 구현
         function prev() {
             if(animate) return; 
+            animate = true;
             temp = index;
             setTimeout(function() {
                 slide[temp].style.cssText = "left: 100%; transition: .4s;";
@@ -94,10 +112,10 @@
             //     index = length - 1;
             // }
             slide[index].style.cssText = "left: -100%;"
-
             setTimeout(function() {
                 if(slide[index].offsetLeft === slide[index].offsetWidth * -1) {
                     //왼쪽(-width px)에 있을 때만 0%(제자리)로 오게하라
+                    console.log(slide[index].offsetLeft);
                     slide[index].style.cssText = "left: 0%; transition: .4s;";
                     setTimeout(function() {
                         animate = false;
@@ -107,6 +125,7 @@
             console.log(index);
         }
 
+        //다음 버튼 구현
         function next() {
             if(animate) return;
             animate = true;
@@ -118,28 +137,30 @@
             index++;
             index = index % length;
             slide[index].style.cssText = "left: 100%;";
-            // 다음에 올 슬라이드를 우측으로 보내놓는다 (즉시)
-            console.log(slide[index].offsetLeft);
+            // 다음에 올 슬라이드를 우측으로 보내놓는다 (즉시)! 즉시 보내고,
 
             setTimeout(function() {
                 if(slide[index].offsetLeft === slide[index].offsetWidth) {
                     slide[index].style.cssText = "left: 0%; transition: .4s;";
+                    console.log(slide[index].offsetLeft);
                 }
                 setTimeout(function() {
                     animate = false;
                 }, 400);
-            }, 5);
-            // 다음에 올 슬라이드를 보이는 화면으로 옮긴다.
-            console.log('next실행');
+            }, 5); // 0.005초 다음에 올 슬라이드를 보이는 화면으로 부드럽게(transition) 옮긴다.
+            console.log(index);
         }
 
+        //버튼과 함수를 연결
         prevBtn.addEventListener('click', prev);
         nextBtn.addEventListener('click', next);
+        autoBtn.addEventListener('click', auto);
+        pauseBtn.addEventListener('click', pause);
 
+        // 셀렉터를 함수로 모듈화하여 사용
         function one(ele) {
             return document.querySelector(ele);
         }
-        
         function all(ele) {
             return document.querySelectorAll(ele);
         }
