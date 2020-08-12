@@ -74,7 +74,6 @@
         var autoBtn = one('#auto');
         var pauseBtn = one('#pause');
         var length = slide.length;
-        var width = slide.length;
         var keyNum;
         var interval;
 
@@ -112,6 +111,7 @@
             //     index = length - 1;
             // }
             slide[index].style.cssText = "left: -100%;"
+            
             setTimeout(function() {
                 if(slide[index].offsetLeft === slide[index].offsetWidth * -1) {
                     //왼쪽(-width px)에 있을 때만 0%(제자리)로 오게하라
@@ -133,7 +133,7 @@
             setTimeout(function() {
                slide[temp].style.cssText = "left: -100%; transition: .4s;";
                             //현재 보고 있는 슬라이드를 좌측으로 보내기
-            }, 20); //0.02초 뒤에 실행되다 보니 index가 바로 1이 돼 버려서
+            }, 20); //0.02초 뒤에 실행되다 보니 index가 바로 1이 돼 버려서 temp에 담기
             index++;
             index = index % length;
             slide[index].style.cssText = "left: 100%;";
@@ -143,6 +143,7 @@
                 if(slide[index].offsetLeft === slide[index].offsetWidth) {
                     slide[index].style.cssText = "left: 0%; transition: .4s;";
                     console.log(slide[index].offsetLeft);
+                    console.log(slide[index].offsetWidth);
                 }
                 setTimeout(function() {
                     animate = false;
