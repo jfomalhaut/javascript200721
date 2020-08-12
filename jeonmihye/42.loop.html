@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container {
+        position: relative;
+        height: 300px;
+        width: 500px;
+        margin: 0 auto;
+        border: 2px solid gray;
+        box-sizing: border-box;
+        /* overflow: hidden; */
+
+    }
+    .slide {
+        font-size: 200px;
+        position: absolute;
+        left: 100%;
+        top: -2px;
+        color: #fff;
+        text-align: center;
+        width: 100%;
+        line-height: 300px;
+    }
+    .slide:nth-child(1) {
+        background: tomato;
+    }
+    .slide:nth-child(2) {
+        background: yellowgreen;
+    }
+    .slide:nth-child(3) {
+        background: deepskyblue;
+    }
+    .slide:nth-child(4) {
+        background: darkorange;
+    }
+    .slide:nth-child(5) {
+        background: darkorchid;
+    }
+    .btns {
+        margin: 50px auto;
+        text-align: center;
+    }
+    .btns button {
+        font-size: 40px;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="slide">1</div>
+        <div class="slide">2</div>
+        <div class="slide">3</div>
+        <div class="slide">4</div>
+        <div class="slide">5</div>
+    </div>
+
+    <div class="btns">
+        <button id="prev">이전</button>
+        <button id="next">다음</button>
+        <button id="auto">시작</button>
+        <button id="pause">정지</button>      
+    </div>
+
+    <script>
+        var index = 0, temp = 0;
+        var animate = false;
+        var slide = all('.slide'); //슬라이드가 여러 개라 올로 잡음
+        var prevBtn = one('#prev');
+        var nextBtn = one('#next');
+        var length = slide.length;
+        var width = slide.length;
+        var keyNum;
+
+        init();
+
+        function init() {
+            slide[index].style.left = "0%";
+        }
+
+        function prev() {
+            if(animate) return; 
+            temp = index;
+            setTimeout(function() {
+                slide[temp].style.cssText = "left: 100%; transition: .4s;";
+            }, 20);
+            index--;
+            index = index === -1 ? length -1 : index;
+                  // 조건문          참       :  거짓
+            // if(index === -1) {
+            //     index = length - 1;
+            // }
+            slide[index].style.cssText = "left: -100%;"
+
+            setTimeout(function() {
+                if(slide[index].offsetLeft === slide[index].offsetWidth * -1) {
+                    //왼쪽(-width px)에 있을 때만 0%(제자리)로 오게하라
+                    slide[index].style.cssText = "left: 0%; transition: .4s;";
+                    setTimeout(function() {
+                        animate = false;
+                    }, 400);
+                }
+            } , 5);
+            console.log(index);
+        }
+
+        function next() {
+            if(animate) return;
+            animate = true;
+            temp = index; //index를 기록
+            setTimeout(function() {
+               slide[temp].style.cssText = "left: -100%; transition: .4s;";
+                            //현재 보고 있는 슬라이드를 좌측으로 보내기
+            }, 20); //0.02초 뒤에 실행되다 보니 index가 바로 1이 돼 버려서
+            index++;
+            index = index % length;
+            slide[index].style.cssText = "left: 100%;";
+            // 다음에 올 슬라이드를 우측으로 보내놓는다 (즉시)
+            console.log(slide[index].offsetLeft);
+
+            setTimeout(function() {
+                if(slide[index].offsetLeft === slide[index].offsetWidth) {
+                    slide[index].style.cssText = "left: 0%; transition: .4s;";
+                }
+                setTimeout(function() {
+                    animate = false;
+                }, 400);
+            }, 5);
+            // 다음에 올 슬라이드를 보이는 화면으로 옮긴다.
+            console.log('next실행');
+        }
+
+        prevBtn.addEventListener('click', prev);
+        nextBtn.addEventListener('click', next);
+
+        function one(ele) {
+            return document.querySelector(ele);
+        }
+        
+        function all(ele) {
+            return document.querySelectorAll(ele);
+        }
+    </script>
+</body>
+</html>
