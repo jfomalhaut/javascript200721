@@ -62,9 +62,17 @@
             font-size: 18px;
             line-height: 23px;
         }
+
+        header {font-size: 30px; text-align: center; padding: 50px;}
     </style>
 </head>
 <body>
+    <header>
+        장바구니 : <b id="count">0</b>
+        <div>
+            <a href="43.마켓컬리장바구니.html">장바구니로 가기</a>
+        </div>
+    </header>
     <div id="container">
        
     </div>
@@ -72,8 +80,9 @@
         var html = "", text = ""; 
         var eventTag = "", price = 0, percent = 0, event = 0;
         var container = document.getElementById('container');
-        var newTag= "";
-        
+        var newTag = "";
+        var cartLength = one('#count');
+        var cart = [];        
         pdt.forEach((element, index) => {
             eventTag = "";
             price = new Intl.NumberFormat().format(element.price); // 숫자 표기, 콤마를 넣어주는것 
@@ -100,7 +109,7 @@
                         <span>${price}원</span>
                         ${eventTag}
                     </div>
-                    <div class="cart">담기</div>
+                    <div class="cart" onclick="addCart(${element.id})">담기</div>
                 </div>
             `;
            
@@ -109,7 +118,21 @@
         
         container.innerHTML = html;
 
+        var index;
         
+        function addCart(itemId) {
+            index = cart.indexOf(itemId);
+            if (index === -1) {
+                cart.push(itemId);
+                localStorage.setItem('cart', cart.join());
+            }
+            cartLength.innerHTML = cart.length;
+        }   
+
+
+        function one(ele) {
+            return document.querySelector(ele);
+        }
 
 
 

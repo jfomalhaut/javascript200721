@@ -1,0 +1,79 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <style>
+        #container {
+            width: 800px;
+            margin: 50px auto;
+            background-color: #eeeeee;
+            padding: 20px;
+        }
+      
+        .item {display: flex;}  
+        .img {flex-grow: 1;}
+
+        .kind {
+            flex-grow: 1;
+            line-height: 100px;
+        }
+
+        .name {
+            font-weight: bold;
+            font-size: 15px;
+        }
+        .price {
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        button {
+            flex-grow: 1;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="wrapper">
+        <div id="container"></div>
+    </div>
+    <script src="./js/items.js"></script>
+    <script>
+        var html = "", txt = "";
+        var container = one('#container');
+        var _cart = [];
+        var cart = [];
+        var cartItem = []; 
+        
+        print();
+
+        function print() {
+            var _cart = localStorage.getItem('cart').split(',');
+            var cart = _cart.map(item => item * 1); 
+            var cartItem = pdt.filter(item => cart.indexOf(item.id) !== -1);
+        }
+        
+        cartItem.forEach(element => {
+            txt = `
+                <div class="item">
+                    <div class="img">
+                        <img src="img2/${element.src}"/>
+                    </div>
+                    <div class="kind">
+                        <div class="name">${element.name}</div>
+                        <div class="price">${element.price}</div>
+                    </div>
+                    <button class="remove" onclick="">삭제</button>
+                </div>
+            `;
+            html += txt;
+        });
+        container.innerHTML = html;
+
+        function one(ele) {
+            return document.querySelector(ele);
+        }
+    </script>
+</body>
+</html>
