@@ -1,0 +1,140 @@
+<html>
+<head>
+    <style>
+      .container {
+          position: relative; height: 300px;
+          width: 500px; margin: 300px auto;
+          border: 2px solid gray;
+          box-sizing: border-box;
+          overflow: hidden;
+      }  
+
+      .slide {
+          font-size: 200px; color: white;
+          position: absolute; text-align: center;
+          width: 100%; line-height: 300px;
+          left: 0%; top: -2px;
+      }
+      .slide:nth-child(1){background: tomato;}
+      .slide:nth-child(2){background: yellowgreen;}
+      .slide:nth-child(3){background: deepskyblue;}
+      .slide:nth-child(4){background: darkred;}
+      .slide:nth-child(5){background: orchid;}
+      .btns { margin: 50px auto; text-align: center;}
+      .btns button {font-size: 40px;}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="slide">1</div>
+        <div class="slide">2</div>
+        <div class="slide">3</div>
+        <div class="slide">4</div>
+        <div class="slide">5</div>
+    </div>
+    <div class="btns">
+        <button id="prev">이전</button>
+        <button id="next">다음</button>
+        <button id="auto">시작</button>
+        <button id="pause">정지</button>
+    </div>
+
+    <script>
+        const TIME = 1000;
+       
+        var index = 0, temp = 0;
+        var animate = false;
+        var slide = all('.slide');
+        var nextBtn = one('#next');
+        var prevBtn = one('#prev');
+        var autoBtn = one('#auto');
+        var pauseBtn = one('#pause');
+        var length = slide.length;
+        var height = slide.length;
+        var interval;
+
+        init();
+
+        function init() {
+            slide[index].style.top = "0%";
+        }
+
+
+        function next() {
+            if(animate) return;
+            animate = true;
+            temp = index;
+            setTimeout(function() {
+                slide[temp].style.cssText = "top: 100%; transition: .4s;";
+            }, 20);
+            console.log(index);
+            index++;
+            index = index % length;
+            slide[index].style.cssText = "top: -100%"
+            setTimeout(function() {
+                if(slide[index].offsetTop < 0) {
+                    slide[index].style.cssText = "top: 0%; transition: .4s;";
+                    setTimeout(function() {
+                        animate = false;
+                    }, 400);
+                }
+            }, 5);
+        }
+        
+        function prev() {
+            if(animate) return;
+            animate = true;
+            temp = index;
+
+            setTimeout(function() {
+                slide[temp].style.cssText = "top: -100%; transition: .4s;";
+            }, 20);
+            index--;
+            if(index === -1){
+                index = length -1;
+            }
+
+            slide[index].style.cssText = "top: 100%";
+
+            setTimeout(function() {
+                if(slide[index].offsetTop > 0) {
+                    slide[index].style.cssText = "top: 0%; transition: .4s";
+                    setTimeout(function() {
+                        animate = false;
+                    }, 400);
+                }
+            }, 5);
+        }
+
+        
+        function auto() {
+           clearInterval(setInterval);
+           interval = setInterval(function() {
+               next();
+            }, TIME);
+        } 
+        
+        
+        function pause() {
+            
+        }
+
+
+     
+        
+        nextBtn.addEventListener('click', next);
+        prevBtn.addEventListener('click', prev);
+        autoBtn.addEventListener('click', auto);
+        pauseBtn.addEventListener('click', pause);
+
+        function one(ele) {
+            return document.querySelector(ele);
+        }
+
+        function all(ele) {
+            return document.querySelectorAll(ele);
+        }
+    </script>
+</body>
+</html>

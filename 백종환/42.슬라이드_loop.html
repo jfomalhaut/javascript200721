@@ -1,0 +1,135 @@
+<html>
+<head>
+    <style>
+        .container {
+            position: relative; height: 300px;
+            width: 500px; margin: 50px auto;
+            border: 2px solid gray;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .slide {
+            font-size: 200px; color:  white;
+            position: absolute; text-align:  center;
+            width: 100%; line-height: 300px;
+            left: 100%; top: -2px;
+        }
+        .slide:nth-child(1){background: tomato;}
+        .slide:nth-child(2){background: yellowgreen;}
+        .slide:nth-child(3){background: deepskyblue;}
+        .slide:nth-child(4){background: darkorange;}
+        .slide:nth-child(5){background: darkorchid;}
+        .btns { margin: 50px auto; text-align: center;}
+        .btns button {font-size: 40px;}
+        
+    </style>
+</head>    
+<body>
+    <div class="container">
+        <div class="slide">1</div>
+        <div class="slide">2</div>
+        <div class="slide">3</div>
+        <div class="slide">4</div>
+        <div class="slide">5</div>
+    </div>    
+    <div class="btns">
+        <button id="prev">이전</button>
+        <button id="next">다음</button>
+        <button id="auto">시작</button>
+        <button id="pause">정지</button>
+    </div>
+
+    <script>
+        var index = 0, temp = 0;
+        var animate = false;
+        var slide = all('.slide');
+        var nextBtn = one('#next');
+        var prevBtn = one('#prev');
+        var length = slide.length;
+        var width = slide.length;
+        
+
+        init();
+
+        function init() {
+            slide[index].style.left = "0%";
+        }
+
+        function next() {
+            if(animate) return;
+            animate = true;
+            temp = index;
+            setTimeout(function() {
+                slide[temp].style.cssText = "left: -100%; transition: .4s;"; //현재 슬라이드 좌측
+            }, 20);
+            index++;
+            index = index % length;
+            slide[index].style.cssText = "left: 100%";// 다음 올 슬라이드 우측으로 놓는다.
+            console.log(slide[index].offsetLeft);
+            setTimeout(function() {
+                if(slide[index].offsetLeft === slide[index].offsetWidth) {
+                    slide[index].style.cssText = "left: 0%; transition: .4s;"; // 다음에 올 슬라이드 보이는 화면으로 옮긴다.
+                    setTimeout(function() {
+                        animate = false;
+                    }, 400);
+                }
+            }, 5);
+            console.log('next 실행');
+        }
+
+       function prev() {
+        if(animate) return;
+           animate = true;
+           temp = index;
+
+           setTimeout(function() {
+               slide[temp].style.cssText = "left: 100%; transition: .4s;";
+           }, 20 );
+
+           index--;
+           if(index === -1){
+               index = length - 1;   
+            } 
+            console.log(index);
+            
+            slide[index].style.cssText = "left: -100%";
+            
+            setTimeout(function() {
+                if(slide[index].offsetLeft === (slide[index].offsetWidth * -1)) {
+                    
+                    slide[index].style.cssText = "left: 0%; transition: .4s;";
+                    setTimeout(function() {
+                        animate = false;
+                    }, 400);
+                }
+            }, 5);
+           
+        }      
+
+           
+           
+            
+
+           
+       
+
+        nextBtn.addEventListener('click', next);
+        prevBtn.addEventListener('click', prev);
+
+
+
+
+        function one(ele) {
+            return document.querySelector(ele);
+        }
+        
+        function all(ele) {
+            return document.querySelectorAll(ele);
+        }
+    </script>
+    
+</body>
+</html>
+<!-- 숙제 시작 정지 버튼 구현과 업다운으로 슬라이드 해오기~!
+ -->
