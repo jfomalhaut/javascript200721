@@ -140,7 +140,7 @@
             // 다음에 올 슬라이드를 우측으로 보내놓는다 (즉시)! 즉시 보내고,
 
             setTimeout(function() {
-                if(slide[index].offsetLeft === slide[index].offsetWidth) {
+                if(slide[index].offsetLeft === slide[index].offsetWidth) { //마이너스나 양수로 바꾸기!!
                     slide[index].style.cssText = "left: 0%; transition: .4s;";
                     console.log(slide[index].offsetLeft);
                     console.log(slide[index].offsetWidth);
