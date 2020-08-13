@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #container {
+        width: 1000px;
+        margin: 10px auto;
+    }
+    #container .item a {
+        display: flex;
+
+    }
+    img {
+        display: block;
+        width: 100px;
+    }
+</style>
+<body>
+    <div class="wrapper">
+        <div id="container">
+
+        </div>
+    </div>
+    
+    <script src="./js/items.js"></script>
+    <script>
+        
+         
+
+        var _cart = localStorage.getItem('cart').split(',');
+        var cart = _cart.map(item => item * 1);
+        var cartItem = pdt.filter(item => cart.indexOf(item.id) !== -1); //장바구니 넣은 상품까지만 리턴됨
+        var container = one('#container');
+        var imgSrc;
+        var name;
+        var price;
+        var eventTag;
+
+        html = "";
+
+        cartItem.forEach(element => {
+            imgSrc = element.src;
+            name = element.name;
+
+            console.log(imgSrc);
+            
+            txt = `
+                <div class="item">
+                    <a href="./40.마켓컬리상세페이지.html?productId=${element.id}">
+                        <img src="img2/${imgSrc}">
+                        <span>${name}</span>
+                    </a>                
+                    <h1>${element.price}</h1>
+                </div>
+            `;            
+            html += txt;
+        });
+
+        container.innerHTML = html;
+
+
+        function one(ele) {
+            return document.querySelector(ele);
+        }
+
+        console.log(pdt);
+        console.log(cartItem);
+
+
+    </script>
+</body>
+</html>
