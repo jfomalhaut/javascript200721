@@ -83,11 +83,12 @@
         var newTag = "";
         var cartLength = one('#count');
         var cart = [];        
+       
         pdt.forEach((element, index) => {
             eventTag = "";
-            price = new Intl.NumberFormat().format(element.price); // 숫자 표기, 콤마를 넣어주는것 
+            price = comma(element.price); // 숫자 표기, 콤마를 넣어주는것 
             if (element.event < element.price) {
-                event = new Intl.NumberFormat().format(element.event);
+                event = (element.event);
                 percent = Math.round((element.price - element.event) / element.price * 100);
                 eventTag = `<span class="event">${event}원(${percent}%)</span>`;
             }
@@ -128,7 +129,9 @@
             }
             cartLength.innerHTML = cart.length;
         }   
-
+        function comma(_price) {
+			return new Intl.NumberFormat().format(_price);
+		}
 
         function one(ele) {
             return document.querySelector(ele);

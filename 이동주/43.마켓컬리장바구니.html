@@ -3,34 +3,24 @@
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <style>
         #container {
-            width: 800px;
+            width: 700px;
             margin: 50px auto;
-            background-color: #eeeeee;
-            padding: 20px;
         }
-      
-        .item {display: flex;}  
-        .img {flex-grow: 1;}
-
-        .kind {
-            flex-grow: 1;
-            line-height: 100px;
-        }
-
-        .name {
-            font-weight: bold;
-            font-size: 15px;
-        }
-        .price {
-            font-weight: bold;
-            font-size: 15px;
-        }
-
-        button {
-            flex-grow: 1;
-            font-size: 20px;
-            font-weight: bold;
-        }
+		.item {
+			height: 150px;
+			border-bottom: 1px solid #ddd;
+			padding: 10px;
+			display: flex;
+		}
+		.item:hover { background: #f0f0f0; }
+		.item > div {
+			flex-grow: 1;
+			padding: 0 30px;
+		}
+		img {
+			height: 100%;
+		}
+		button { font-size: 20px; }
     </style>
     
 </head>
@@ -45,31 +35,42 @@
         var _cart = [];
         var cart = [];
         var cartItem = []; 
+        var index;
         
         print();
 
         function print() {
-            var _cart = localStorage.getItem('cart').split(',');
-            var cart = _cart.map(item => item * 1); 
-            var cartItem = pdt.filter(item => cart.indexOf(item.id) !== -1);
-        }
-        
-        cartItem.forEach(element => {
+            html = "";
+            _cart = localStorage.getItem('cart').split(',');
+            cart = _cart.map(item => item * 1); 
+            cartItem = pdt.filter(item => cart.indexOf(item.id) !== -1);
+            cartItem.forEach(element => {
             txt = `
                 <div class="item">
-                    <div class="img">
-                        <img src="img2/${element.src}"/>
+                    <img src="./img2/${element.src}">
+                    <div>
+                        <h1 class="name">${element.name}</h1>
+                        <h2 class="price">${comma(element.price)}원</h2>
                     </div>
-                    <div class="kind">
-                        <div class="name">${element.name}</div>
-                        <div class="price">${element.price}</div>
-                    </div>
-                    <button class="remove" onclick="">삭제</button>
+                    <input type="hidden" value="${element.id}"/>
+                    <button class="remove" onclick="removeCart(${element.id})">삭제</button>
                 </div>
             `;
             html += txt;
         });
-        container.innerHTML = html;
+            container.innerHTML = html;
+        }
+
+        function removeCart(_id) {
+			index = cart.indexOf(_id);
+			cart.splice(index, 1);
+			localStorage.setItem('cart', cart.join());
+			print();
+		}
+        
+        function comma(_price) {
+			return new Intl.NumberFormat().format(_price);
+		}
 
         function one(ele) {
             return document.querySelector(ele);
