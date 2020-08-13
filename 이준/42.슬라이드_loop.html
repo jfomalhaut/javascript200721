@@ -38,11 +38,14 @@
 		<button id="pause">정지</button>
 	</div>
 	<script>
-		var index = 0, temp = 0;
+		const DURATION = 2000;
+		var index = 0, temp = 0, interval;
 		var animate = false;
 		var slide = all('.slide');
 		var nextBtn = one('#next');
 		var prevBtn = one('#prev');
+		var autoBtn = one('#auto');
+		var pauseBtn = one('#pause');
 		var length = slide.length;
 
 		init();
@@ -62,7 +65,7 @@
 			index = index % length;
 			slide[index].style.cssText = "left: 100%;"; // 다음에 올 슬라이드를 우측으로 보내놓는다(즉시)
 			setTimeout(function() {
-				if (slide[index].offsetLeft === slide[index].offsetWidth) {
+				if (slide[index].offsetLeft > 0) {
 					slide[index].style.cssText = "left: 0%; transition: .4s;"; // 다음에 올 슬라이드를 보이는 화면으로 옮긴다.
 					setTimeout(function() {
 						animate = false;
@@ -87,7 +90,7 @@
 			// }
 			slide[index].style.cssText = "left: -100%;";
 			setTimeout(function() {
-				if (slide[index].offsetLeft === (slide[index].offsetWidth * -1)) {
+				if (slide[index].offsetLeft < 0) {
 					slide[index].style.cssText = "left: 0%; transition: .4s";
 					setTimeout(function() {
 						animate = false;
@@ -96,8 +99,21 @@
 			}, 5);
 		}
 
+		function autoPlay() {
+			clearInterval(interval);
+			interval = setInterval(function() {
+				next();
+			}, DURATION);
+		}
+		
+		function pause() {
+			clearInterval(interval);
+		}
+
 		nextBtn.addEventListener('click', next);
 		prevBtn.addEventListener('click', prev);
+		autoBtn.addEventListener('click', autoPlay);
+		pauseBtn.addEventListener('click', pause);
 
 
 

@@ -1,0 +1,81 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<style>
+		#container {
+			width: 700px;
+			margin: 50px auto;
+		}
+		.item {
+			height: 150px;
+			border-bottom: 1px solid #ddd;
+			padding: 10px;
+			display: flex;
+		}
+		.item:hover { background: #f0f0f0; }
+		.item > div {
+			flex-grow: 1;
+			padding: 0 30px;
+		}
+		img {
+			height: 100%;
+		}
+		button { font-size: 20px; }
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div id="container"></div>
+	</div>
+	<script src="./js/items.js"></script>
+	<script>
+		var container = one('#container');
+		var txt = '', html = '';
+		var _cart = [];
+		var cart = [];
+		var cartItem = [];
+		var index;
+
+		print();
+
+		function print() {
+			html = "";
+			_cart = localStorage.getItem('cart').split(',');
+			cart = _cart.map(item => item * 1); // [1,2,3,4,5]
+			cartItem = pdt.filter(item => cart.indexOf(item.id) !== -1);
+			cartItem.forEach(element => {
+				txt = `
+					<div class="item">
+						<img src="./img2/${element.src}">
+						<div>
+							<h1 class="name">${element.name}</h1>
+							<h2 class="price">${comma(element.price)}원</h2>
+						</div>
+						<input type="hidden" value="${element.id}"/>
+						<button class="remove" onclick="removeCart(${element.id})">삭제</button>
+					</div>
+				`;
+				html += txt;
+			});
+
+			container.innerHTML = html;
+		}
+
+		function removeCart(_id) {
+			index = cart.indexOf(_id);
+			cart.splice(index, 1);
+			localStorage.setItem('cart', cart.join());
+			print();
+		}
+
+		function comma(_price) {
+			return new Intl.NumberFormat().format(_price);
+		}
+
+		function one(ele) {
+			return document.querySelector(ele);
+		}
+
+	</script>
+</body>
+</html>

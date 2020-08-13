@@ -41,9 +41,16 @@
 		.event {
 			color: darkred;
 		}
+		header { font-size: 30px; text-align: center; padding: 50px;}
 	</style>
 </head>
 <body>
+	<header>
+		장바구니 : <b id="count">0</b>
+		<div>
+			<a href="43.마켓컬리장바구니.html">장바구니로 가기</a>
+		</div>
+	</header>
 	<div id="container"></div>
 
 	<script>
@@ -51,12 +58,14 @@
 		var html = "", txt = "";
 		var eventTag = "", price = 0, event = 0, percent = 0;
 		var container = document.getElementById('container');
+		var cartLength = one('#count');
+
 		pdt.forEach((element, index) => {
 			eventTag = "";
-			price = new Intl.NumberFormat().format(element.price); // 숫자표기, 콤마 넣는 것
+			price = comma(element.price); // 숫자표기, 콤마 넣는 것
 			
 			if (element.event < element.price) {
-				event = new Intl.NumberFormat().format(element.event);
+				event = comma(element.event);
 				percent = Math.round((element.price - element.event) / element.price * 100);
 				eventTag = `<span class="event">${event}원(${percent}%)</span>`;
 			}
@@ -80,17 +89,31 @@
 		});
 
 		container.innerHTML = html;
-
-		function addCart(item) {
-			var idx = cart.indexOf(item);
-			if (idx === -1) {
-				cart.push(item);
+		
+		var index;
+		
+		function addCart(itemId) {
+			index = cart.indexOf(itemId);
+			if (index === -1) {
+				cart.push(itemId);
 				localStorage.setItem('cart', cart.join());
-			} else {
-				alert('Already');
 			}
-			
+			cartLength.innerHTML = cart.length;
+
+			// 1. 중복확인을 한다. => if, index === -1, indexOf
+			// 2. 담는다(push) push
+			// 3. count를 변경한다.(html) => cart.length;
 		}
+
+		function comma(_price) {
+			return new Intl.NumberFormat().format(_price);
+		}
+
+		function one(ele) {
+			return document.querySelector(ele);
+		}
+
+
 
 	</script>
 </body>
