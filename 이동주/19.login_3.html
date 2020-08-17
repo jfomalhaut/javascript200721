@@ -1,0 +1,23 @@
+<html>
+<body>
+    <div class="container">
+        <input type="text" id="userId" onkeypress="enter_test()"><br>
+        <input type="password" id="userPwd" onkeypress="enter_test()"><br>
+        <button id="login">로그인</button>
+    </div>
+    <script>
+        const ID = "lupigomu";
+        const PWD = 12345;
+
+        var userId = document.getElementById('userId');
+        var userPwd = document.getElementById('userPwd');
+        var login = document.getElementById('login');
+
+        function enter_test() {
+            if(window.event.keyCode == 13) {
+                alert('로그인 성공');
+            }
+        }
+    </script>
+</body>
+</html>
