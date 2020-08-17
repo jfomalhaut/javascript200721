@@ -1,0 +1,28 @@
+<html>
+<body>
+    <h1>지연된 시간 :<span id="time">0</span></h1>
+    <button id="start">시작</button>
+    <script>
+
+        const TIME = 1000;
+        var time = document.getElementById('time');
+        var start = document.getElementById('start');
+        var interval;
+        var value = 0;
+
+        start.onclick = function() {
+            clearInterval(interval);
+            setInterval(function() {
+                timer();
+            }, TIME);
+        }
+
+        function timer() {
+            value++;
+            time.innerHTML = value;
+        }
+    </script>
+
+
+</body>
+</html>

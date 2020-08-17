@@ -1,0 +1,32 @@
+<html>
+<body>
+    <h1>남은시간 : <span id="time">10</span></h1>
+    <div class="field">
+        <button id="send">인증번호보내기</button>
+    </div>
+    <script>
+        const TIME = 1000;
+        var time = document.getElementById('time');
+        var send = document.getElementById('send');
+        var value = 10;
+        var interval;
+
+        send.onclick = function() {
+            clearInterval(interval);
+            setInterval(function()  {
+                timer();
+            }, TIME);
+        }
+
+        function timer() {
+            value--;
+            time.innerHTML = value;
+            if (value === 0) {
+                alert('FAIL');
+                clearInterval(interval);
+                value = 10;
+            }
+        }
+    </script>
+</body>
+</html>
